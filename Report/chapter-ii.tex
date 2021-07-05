@@ -1,4 +1,4 @@
-\chapter{Literature Review} \label{LiteratureReview}
+\chapter{Literature Review}
 
 The focus of this chapter is to analyse and breakdown current research and literature concerning the use of NLP models within a domain and their implementations, specifically looking into the area of academia. The domain for this research will be text classification on Student Feedback forms; NLP has many interconnecting domains, in which implementations can heavily affect performance and the returned results. As the theory behind NLP grows, it is vital to use the least computationally cost---effective methods in which this section will be looking at merging newer techniques with older models to potentially improve our understanding of NLP models.
 
@@ -37,7 +37,9 @@ A generalised approach for analysing student feedback is with the use of Word Em
 
 The intended outcome is to evaluate student feedback surveys which will be targeted towards enhancing the level of learning and engagement by students; to achieve the desired results, the following techniques would be most suitable if appropriately applied in this context.
 
-\subsection{Sentiment Analysis and Opinion Mining} The desired outcome is to derive subjective material from students’ input, this can be insights, discussions or opinions which automatically review the polarity (negative, neutral, or positive) of information regarding the academic facilities \parencite{kandhro2019student}. Sentiment Analysis has three levels of scope which can be reduced to emulate different levels of comprehension:
+\subsection{Sentiment Analysis and Opinion Mining}
+
+The desired outcome is to derive subjective material from students’ input, this can be insights, discussions or opinions which automatically review the polarity (negative, neutral, or positive) of information regarding the academic facilities \parencite{kandhro2019student}. Sentiment Analysis has three levels of scope which can be reduced to emulate different levels of comprehension:
 
 \begin{figure}[H]
     \centering
@@ -53,13 +55,19 @@ The intended outcome is to evaluate student feedback surveys which will be targe
 
 \textcite{kastrati2020aspect} “Aspect---Based Opinion Mining of Students' Reviews” (2020) to produce a weakly supervised framework aimed at training deep learning models with little to no human interaction. Their proposed framework analyses a desired sentiment at document level and yielded an overall F1 score of 86.13\%  accuracy; they also tested their framework at the aspect level for SA to which yielded an F1 score of 82.1\%.
 
-\subsection{Topic Labelling} This technique is used in conjunction with text mining to automatically handle significant and reoccurring themes and topics within students’ feedback with automatic creation of category labels per survey and section. LDA is a suitable model which can achieve the above, it uses Latent Dirichlet Distributions to group topics as a multinomial distribution of words and is able to associate words based on the probability distribution of the set \parencite{unankard2019topic}.
+\subsection{Topic Labelling}
 
-\subsection{Language Detection} This technique of NLP deals with determining which natural language (NL) is provided as the input source, this approach could be particularly beneficial to lecturers if the student and lecturer do not share the same first language; a classifier could be challenged by identifying an incorrect NL due to lexical and syntactical resemblance. These challenges could return pedagogical ambiguities within feedback \parencite{heift2017computer}, if a lecturer misinterprets student feedback due to a misunderstood lexical, an unintended impression will be represented.
+his technique is used in conjunction with text mining to automatically handle significant and reoccurring themes and topics within students’ feedback with automatic creation of category labels per survey and section. LDA is a suitable model which can achieve the above, it uses Latent Dirichlet Distributions to group topics as a multinomial distribution of words and is able to associate words based on the probability distribution of the set \parencite{unankard2019topic}.
+
+\subsection{Language Detection}
+
+This technique of NLP deals with determining which natural language (NL) is provided as the input source, this approach could be particularly beneficial to lecturers if the student and lecturer do not share the same first language; a classifier could be challenged by identifying an incorrect NL due to lexical and syntactical resemblance. These challenges could return pedagogical ambiguities within feedback \parencite{heift2017computer}, if a lecturer misinterprets student feedback due to a misunderstood lexical, an unintended impression will be represented.
 
 This can be aided by converting NL structures in to a first---order logic (FOL) object to which these mathematical models will return the highest matching lexical in a percentage \parencite{perikos2017assistance}. Therefore, minimising miscommunication.
 
-\subsection{Intent Detection} This technique is used to programmatically classify implied intent within an input, based on a certain ambition or outcome, usually a verbal adjective. Every student feedback survey has the same interaction purpose, to improve their quality of learning, this specific domain can be modelled to automatically categorise each intentional improvement specification. Intent classification can also be used to provide real---time feedback to lecturers opposed to standardised question---answer dialog systems \parencite{jensen2020toward}.
+\subsection{Intent Detection}
+
+This technique is used to programmatically classify implied intent within an input, based on a certain ambition or outcome, usually a verbal adjective. Every student feedback survey has the same interaction purpose, to improve their quality of learning, this specific domain can be modelled to automatically categorise each intentional improvement specification. Intent classification can also be used to provide real---time feedback to lecturers opposed to standardised question---answer dialog systems \parencite{jensen2020toward}.
 
 A common implementation of intent detection is with the use of a rule---based model, these systems use predefined constraints as intents with the hypothesis that occurring utterances conform with the predefined set of rules. These rules will be disputed when a novel utterance is parsed, as students have different methods of expressing their views, novel utterances will be frequent and with the appearance of utterances without a predefined label will increase, this problem exists under Zero---shot learning with CNNs \parencite{xia2018zero}.
 
@@ -118,15 +126,15 @@ Phase 2 being dimensionality reduction will handle the acceptable object to chec
 
 Phase 3 is simply identifying the most appropriate classification pipeline. Phase 4 is evaluation, there are many ways to evaluate how a classification model performs but the most important are speed and accuracy \textcite{kowsari2019text}.
 
-\subsection{Identifying Research Gaps and Including Novelty}
+\subsection{Identifying Research Gaps and Including Novelty} \label{section:IdentifyingResearchGapsandIncludingNovelty}
 
 The purpose of reviewing existing literature is to understand how current research and findings are being used to expand a topic’s theory; the aim of this section is to compile accepted theory, identify common themes from background knowledge, and to distinguish potential gaps in existing literature to provoke the creation of a novel NLP idea and methodological schematic.
 
 This section identifies two suggestions based on concurrent themes in this report; one is suggestive to the theoretical workings of this paper and the other is suggestive to domain specific feature applications.
 
-Many comparative studies overlook how the interaction between simplistic aspects of traditional approaches can be benefitted by incorporating machine learning aspects such as (C/R) NNs can affect classification performance. As NLP grows, the comparison between POS---Tagging and evolved versions of Word2Vec have also been overlooked, studies such as “Recent Trends in Deep Learning Based Natural Language” by \parencite{young2018recent} directly compare linear implementations of statistical analysis but do not look at non---linear Word2Vec advances such as SPvec \parencite{zhang2020spvec}, this will be expanded in chapter 8.
+Many comparative studies overlook how the interaction between simplistic aspects of traditional approaches can be benefitted by incorporating machine learning aspects such as (C/R) NNs can affect classification performance. As NLP grows, the comparison between POS---Tagging and evolved versions of Word2Vec have also been overlooked, studies such as “Recent Trends in Deep Learning Based Natural Language” by \parencite{young2018recent} directly compare linear implementations of statistical analysis but do not look at non---linear Word2Vec advances such as SPvec \parencite{zhang2020spvec}, this will be expanded on in section \ref{section:DerivedfromLiteratureReview}.
 
-\textcite{suleiman2019using} state that Word2Vec is an efficient model for word embedding, however think it can be improved with an extension, their proposed model explores how POS---Tagging could enhance the probabilistic values of results returned by Word2Vec models as POS---Tagging calculates a higher vector between feature semantics. Whilst covering Word2Vec implementations with POS---Tagging, they did not cover fundamental analysis of how POS---Tagging effects Word2Vec’s facets such as POS---Tagging with CBOW vs Skip gram algorithms; item 1’s “enhancement” could refer to the use of character n---grams to ensure the importance of Word2Vec word---order. this will be expanded in chapter 8.
+\textcite{suleiman2019using} state that Word2Vec is an efficient model for word embedding, however think it can be improved with an extension, their proposed model explores how POS---Tagging could enhance the probabilistic values of results returned by Word2Vec models as POS---Tagging calculates a higher vector between feature semantics. Whilst covering Word2Vec implementations with POS---Tagging, they did not cover fundamental analysis of how POS---Tagging effects Word2Vec’s facets such as POS---Tagging with CBOW vs Skip gram algorithms; item 1’s “enhancement” could refer to the use of character n---grams to ensure the importance of Word2Vec word---order. this will be expanded on in section \ref{section:DerivedfromLiteratureReview}.
 
 According to Sultana et al., (2018) applied SVMs yielded greater results when combined with a textual classification technique and was the building block for item two; the justified domain being student feedback can be promoted to predicting student feedback based on existing results and Text Frequency Analysis \parencite{alqurashi2019predicting}.
 
