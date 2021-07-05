@@ -340,3 +340,7 @@ Temporary Items
 # Local History for Visual Studio Code
 .history/
 .vscode/settings.json
+
+Report/main.ps
+
+Report/main.sh
