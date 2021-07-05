@@ -1,7 +1,5 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \documentclass[12pt, a4paper]{report}
-\usepackage[latin1]{inputenc}
+\usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
@@ -14,9 +12,15 @@
 % Uncomment for blank lines between paragraphs rather than
 % indents
 \usepackage[parfill]{parskip}
+\usepackage{float}
+
+\usepackage{pythonhighlight}
+
+
+% testing broken unicode that I can't spot
+\DeclareUnicodeCharacter{200A}{******************************}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 
 %%%%%%%%%%%%
 
@@ -32,16 +36,15 @@
 \pagenumbering{alph}	% This stops the title page being counted in the page numbering
 \thispagestyle{empty}	% This stops a number being put at the bottom
 \vspace*{1mm}	% The asterisk is needed because it's at the top of a page
-\includegraphics[width=0.7\textwidth, right]{figures/UoP_Primary_Logo_Stacked_pms.eps}
+\includegraphics[width=0.8\textwidth, center]{figures/UoP_Primary_Logo_Stacked_pms.eps}
 \vspace{10mm}
 
 \begin{center}
 % Put the full title  on the front page
-\huge\textbf{\textsf{Insert Dissertation\\Title Here}}\\
-\vspace{15mm}
+\huge\textbf{\textsf{Domain analysis of feature implementations between Classic and Deep NLP models.}}\\
+\vspace{1mm}
 % The student handbook states you need your full name on the front page
-\large \textbf{Insert Author Here}\\
-
+\large \textbf{William Green}\\
 
 \vspace{10mm}
 \normalsize School of Computing \\ Final Year Project PJE / PJS 40
@@ -82,7 +85,7 @@ No more than 300 words summarizing this dissertation.
 \phantomsection
 \addcontentsline{toc}{chapter}{Acknowledgements}
 \chapter*{Acknowledgements}
-Thanks.
+This ones for me.
 \newpage
 
 
@@ -92,13 +95,24 @@ Thanks.
 %%%%%%%%%%%%%%%%% INCLUDE YOUR CHAPTERS BELOW
 % If you move the order around, all the cross references remain, sensibly renumbered.
 % yay!
-\include{intro}
-\include{more-examples}
+
+% \include{intro}
+% \include{more-examples}
+
+\include{chapter-i}
+\include{chapter-ii}
+\include{chapter-iii}
+\include{chapter-iv}
+\include{chapter-v}
+\include{chapter-vi}
+\include{chapter-vii}
+\include{chapter-viii}
+\include{chapter-ix}
+
 
 %%%%%%%%%%%%%%% APPENDICES
 \appendix
 \chapter{First Appendix}
-
 
 %%%%%%%%%%%%%% REFERENCES SECTION
 \newpage
@@ -106,7 +120,4 @@ Thanks.
 \addcontentsline{toc}{chapter}{Bibliography}
 % In order to try and get a consistent format I copy and paste the INSPIRE bibtex code into my bibtex file.
 \printbibliography
-
-
-
 \end{document}
