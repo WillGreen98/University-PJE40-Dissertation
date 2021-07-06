@@ -18,11 +18,20 @@
 
 
 % testing broken unicode that I can't spot
-\DeclareUnicodeCharacter{200A}{******************************}
+% \DeclareUnicodeCharacter{200A}{******************************}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%
+
+%  attempt to write wordcount
+
+% Keywords command
+\providecommand{\keywords}[1]
+{
+  \small
+  \textbf{\textit{Keywords---}} #1
+}
 
 \addbibresource{refs.bib}
 
@@ -36,12 +45,12 @@
 \pagenumbering{alph}	% This stops the title page being counted in the page numbering
 \thispagestyle{empty}	% This stops a number being put at the bottom
 \vspace*{1mm}	% The asterisk is needed because it's at the top of a page
-\includegraphics[width=0.8\textwidth, center]{figures/UoP_Primary_Logo_Stacked_pms.eps}
-\vspace{10mm}
+\includegraphics[width=0.85\textwidth, center]{figures/UoP_Primary_Logo_Stacked_pms.eps}
+\vspace{8mm}
 
 \begin{center}
 % Put the full title  on the front page
-\huge\textbf{\textsf{Domain analysis of feature implementations between Classic and Deep NLP models.}}\\
+\LARGE\textbf{\textsf{Domain analysis of feature implementations between Classic and Deep NLP models.}}\\
 \vspace{1mm}
 % The student handbook states you need your full name on the front page
 \large \textbf{William Green}\\
@@ -61,6 +70,8 @@
 \chapter*{Abstract}	% The asterisk stops a chapter number being assigned
 
 No more than 300 words summarizing this dissertation.
+
+\indent\keywords{Natural Language Processing, Machine Learning, Optimization}
 
 \newpage
 \renewcommand{\contentsname}{Table of Contents}	% Changes the contents title from 'Contents' to 'Table of Contents' just because it looks better.

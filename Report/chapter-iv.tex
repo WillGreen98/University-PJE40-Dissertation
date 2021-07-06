@@ -10,7 +10,7 @@ As no human parties were involved, other than the developer and project supervis
 
 \subsection{Requirement Research of Current Models}
 
-A generalised overview of functional requirements of a text classification model:
+This project's system and functional requirements can be broken down into a simplified structure, such that the procoess for text classification if as follows:
 
 \begin{enumerate}
     \item Parse Data
@@ -28,7 +28,7 @@ A generalised overview of functional requirements of a text classification model
 \item Feature Engineering and Extraction
 \item Feed clean dataset into model
 \item Train model
-\item Tune hyperparameters
+\item Tune hyper-parameters
     \begin{enumerate}
         \item Number of layers in model and units per layer
         \item Dropout rate
@@ -73,6 +73,7 @@ Defining potential constraints of this project aided identifying its functional 
     \item The model may predict future student evaluations.
     \item The model should save outputted data to a local text file
     \item The model won’t have a GUI (can be developed for future work).
+    \item The model may have param-arguments for it's runtime, most likely in the form of CLI arguments, this allows the model to execute commands in a certain order, i.e \verb-----parse to select the input dataset.
 \end{itemize}
 
 \begin{itemize}
@@ -107,7 +108,7 @@ Defining potential constraints of this project aided identifying its functional 
     \item Recall of data and specifics
     \item The model must yield optimal precision of data and classification.
     \item The model must provide and produce an accurate F-Score.
-    \item The model must run within an acceptable timeframe for a given machine, e.g., testing must not run over 24hrs for an appropriate dataset.
+    \item The model must run within an acceptable time-frame for a given machine, e.g., testing must not run over 24hrs for an appropriate dataset.
     \item The model must be maintainable within its set scope, overdeveloping or under developing can lead to bugs or broken links such as outdated APIs.
     \item The model must be useable for a lay person who wants to classify text (school admin).
 \end{itemize}
