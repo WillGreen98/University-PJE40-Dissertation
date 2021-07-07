@@ -16,6 +16,8 @@
 
 \usepackage{pythonhighlight}
 
+\usepackage[toc,page]{appendix}
+\usepackage{pdfpages}
 
 % testing broken unicode that I can't spot
 % \DeclareUnicodeCharacter{200A}{******************************}
@@ -122,8 +124,17 @@ This ones for me.
 
 
 %%%%%%%%%%%%%%% APPENDICES
-\appendix
-\chapter{First Appendix}
+% \appendix
+
+\begin{appendices}
+  \newpage
+
+  \chapter{Project Initiation Document}
+  \includepdf[pages=-]{PJE_UP853829_PID/PID_UP853829.pdf}
+
+  \chapter{Ethics Review}
+  % \includepdf[pages=-]{PJE_UP853829_PID/UP853829_Ethics_Form.pdf}
+\end{appendices}
 
 %%%%%%%%%%%%%% REFERENCES SECTION
 \newpage
