@@ -13,7 +13,7 @@ As originally intended, this project would have seen two differing implementatio
     \label{fig:ClassicalNLP}}
 \end{figure}
 
-Classical or traditional methods for NLP include: Bag-Of-Words, N-Gram, Hidden Markov Models using Markov Chains and Part-Of-Speech Tagging. The developer had originally intended to implement a traditional approach within a machine learning model. The combination of Bag-Of-Words with a machine learning model to calculate a word’s vector based on its TF-IDF value would have been the start, such that:
+Classical or traditional methods for NLP include: (Continuous)Bag-Of-Words, N-Gram, Hidden Markov Models using Markov Chains and Part-Of-Speech Tagging. The developer had originally intended to implement a traditional approach within a machine learning model. The combination of Bag-Of-Words with a machine learning model to calculate a word’s vector based on its TF-IDF value would have been the start, such that:
 
 \begin{equation}
     tf(t,d) = \frac{f_t, _d}{\sum{t \in_d} f _t {_`}, _d}
@@ -54,7 +54,7 @@ The development of the project model is based on a supervised approach due to th
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{figures/chapter-5/SupervisedLearningChart.pdf}
-    \caption[SupervisedLearning]{Sequence control for Supervised learning .
+    \caption[SupervisedLearning]{Sequence control for Supervised learning.
     \label{fig:SupervisedLearningChart}}
 \end{figure}
 
@@ -63,7 +63,7 @@ The development of the project model is based on a supervised approach due to th
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{figures/chapter-5/Pipeline.pdf}
-    \caption[MLTCPipeline]{Sequence control for Supervised learning .
+    \caption[MLTCPipeline]{Pipeline for model classification.
     \label{fig:MLTCPipeline}}
 \end{figure}
 
@@ -78,3 +78,20 @@ There are five main steps for a text classification pipeline:
 \end{enumerate}
 
 \section{Data Preparing and Pre---processing}
+
+Data Preparing
+
+\section{Model}
+
+Skip-gram rather than CBOW as it yields better results with large datasets - such as student feedback - skip gram can also be context aware as it converts neighboring lexemes to vectors
+
+\subsection{Skip-Gram}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.49\textwidth]{figures/chapter-5/SkipGramModel.pdf}
+    \caption[SkipGramModel]{Input flow of Skip-Gram model.
+    \label{fig:SkipGramModel}}
+\end{figure}
+
+The skip-gram model can be seen as the inverse of the bag-of-words model as it attempts to vectorize neighboring words first to identify corpus context, whereas, bag-of-words takes each lexeme first, produces a vector sum and then categorises each word.

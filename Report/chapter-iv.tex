@@ -43,7 +43,7 @@ This project's system and functional requirements can be broken down into a simp
 
 This project makes use of the MoSCoW prioritisation technique whereby requirements are defined as “Must Have”, “Should Have”, “Could have”, and “Won’t Have at this Time”. The four categories of MoSCoW can be translated to Core, Base, Additional, and Future Work. This project acknowledges the disadvantages of the MoSCoW technique; however, its simplicity outweighs the disadvantages in this environment.
 
-\section{Constraints}
+\section{Requirement Constraints}
 
 \begin{itemize}
     \item Issues locating appropriate openly sourced datasets of existing student feedback.
@@ -58,73 +58,69 @@ Defining potential constraints of this project aided identifying its functional 
 \section{Functional Requirements} \label{section:FunctionalRequirements}
 
 \begin{itemize}
-    \item The model must correctly parse a given dataset such that the correctness of the original dataset is intact.
-    \item The model must pre-process the dataset into a given method: tokens/vectors.
-    \item The model must pre-process the text within the dataset into specific categories.
-    \item The model must clean the text such that cleaning involves the removal of empty fields within a CSV file, any useless or incorrect punctuation, and unnecessary stop words.
-    \item The model must take the clean data and categories stem words.
-    \item The model must provide an analytical solution in which communicates with processing features.
-    \item The model solution must be agnostic towards data types, data sensors, vendor (mostly universities or colleges) and data creation date.
-    \item The model may report analysis in real-time with graphs or training data within the CLI, this includes any abnormalities which might need deeper analysis to be useful data.
-    \item The model may create an interactable alert so the user can decide on how to proceed.
-    \item The model must produce a machine learning implementation that learns and is trained on sample data that is then extrapolated into a useable asset.
-    \item The model must execute statistical analysis on the yielded information which is generated for future examination.
-    \item The model must classify text.
-    \item The model may predict future student evaluations.
-    \item The model should save outputted data to a local text file
-    \item The model won’t have a GUI (can be developed for future work).
-    \item The model may have param-arguments for it's runtime, most likely in the form of CLI arguments, this allows the model to execute commands in a certain order, i.e \verb-----parse to select the input dataset.
-\end{itemize}
-
-\begin{itemize}
     \item \textbf{\textit{Must Have}}
         \begin{itemize}\label{FMH}
             \item MH1
+            \item The model must correctly parse a given dataset such that the correctness of the original dataset is intact.
+            \item The model must pre-process the dataset into a given method: tokens/vectors.
+            \item The model must pre-process the text within the dataset into specific categories.
+            \item The model must clean the text such that cleaning involves the removal of empty fields within a CSV file, any useless or incorrect punctuation, and unnecessary stop words.
+            \item The model must take the clean data and categories stem words.
+            \item The model must produce a machine learning implementation that learns and is trained on sample data that is then extrapolated into a useable asset.
+            \item The model must classify text.
         \end{itemize}
     \item \textbf{\textit{Should Have}}
         \begin{itemize}\label{FSH}
             \item SH1
+            \item The model solution should be agnostic towards data types, data sensors, vendor (mostly universities or colleges) and data creation date.
+            \item The model should report analysis in real-time with graphs or training data within the CLI, this includes any abnormalities which might need deeper analysis to be useful data.
+            \item The model must execute statistical analysis on the yielded information which is generated for future examination.
         \end{itemize}
     \item \textbf{\textit{Could Have}}
         \begin{itemize}\label{FCH}
             \item CH1
+            \item The model could provide an analytical solution in which communicates with processing features.
+            \item The model could create an interactable alert so the user can decide on how to proceed.
+            \item The model may predict future student evaluations.
+            \item The model could save outputted data to a local text file
+            \item The model could have param-arguments for it's runtime, most likely in the form of CLI arguments, this allows the model to execute commands in a certain order, i.e \verb-----parse to select the input dataset.
         \end{itemize}
     \item \textbf{\textit{Won't Have}}
         \begin{itemize}\label{FWH}
             \item WH1
+            \item The model won’t have a GUI (can be developed for future work).
         \end{itemize}
 \end{itemize}
 
 \section{Non---Functional Requirements} \label{section:NonFunctionalRequirements}
 
 \begin{itemize}
-    \item The model may be scalable for multiple datasets or machines.
-    \item The model may yield predictions or results limited to the scope of a set asset.
-    \item The model may yield results across several datasets.
-    \item The model must yield maximum theoretical performance for its implementation, this includes:
-    \item Correct potential true positives
-    \item Correct potential false positives
-    \item Account for and correct false negatives
-    \item Recall of data and specifics
-    \item The model must yield optimal precision of data and classification.
-    \item The model must provide and produce an accurate F-Score.
-    \item The model must run within an acceptable time-frame for a given machine, e.g., testing must not run over 24hrs for an appropriate dataset.
-    \item The model must be maintainable within its set scope, overdeveloping or under developing can lead to bugs or broken links such as outdated APIs.
-    \item The model must be useable for a lay person who wants to classify text (school admin).
-\end{itemize}
-
-\begin{itemize}
     \item \textbf{\textit{Must Have}}
         \begin{itemize}\label{NFMH}
             \item MH1
+            \item The model must provide and produce an accurate F-Score.
+            \item The model must be maintainable within its set scope, overdeveloping or under developing can lead to bugs or broken links such as outdated APIs.
         \end{itemize}
     \item \textbf{\textit{Should Have}}
         \begin{itemize}\label{NFSH}
             \item SH1
+            \item The model may yield predictions or results limited to the scope of a set asset.
+            \item The model may yield results across several datasets.
+            \item The model must yield maximum theoretical performance for its implementation, this includes:
+                \begin{itemize}
+                    \item Correct potential true positives
+                    \item Correct potential false positives
+                    \item Account for and correct false negatives
+                    \item Recall of data and specifics
+                \end{itemize}
+            \item The model should yield optimal precision of data and classification.
+            \item The model should run within an acceptable time-frame for a given machine, e.g., testing must not run over 24hrs for an appropriate dataset.
+            \item The should must be useable for a lay person who wants to classify text (school admin).
         \end{itemize}
     \item \textbf{\textit{Could Have}}
         \begin{itemize}\label{NFCH}
             \item CH1
+            \item The model may be scalable for multiple datasets or machines.
         \end{itemize}
     \item \textbf{\textit{Won't Have}}
         \begin{itemize}\label{NFWH}
