@@ -19,7 +19,7 @@ The value of NLP is in its ability to remove ambiguity in linguistic forms, this
     \item Writing Assistance
 \end{itemize}
 
-The list above defines six key areas of NLP that are used in commercial spaces and majority appeal to the academic space; the listed six areas are a high---level overview at how different theoretical approaches combine in---order to perform a given task \parencite{dale2019nlp} for the purpose of this literature review, we will be looking at the most relevant areas in which aid this domain.
+The list above outlines six key areas of NLP that are used in commercial spaces and the majority appeals to the academic space; the listed six areas are a high---level overview at how different theoretical approaches combine in---order to perform a given task \parencite{dale2019nlp} for the purpose of this literature review, we will be looking at the most relevant areas in which aid this domain.
 
 \section{Uses of NLP in Academic Institutions}
 
@@ -49,15 +49,15 @@ The desired outcome is to derive subjective material from students’ input, thi
 
 \newpage
 
-\textcite{kastrati2020weakly}, established an aspect---orientated opinion---mining model; student feedback was in English NL whereby three unique NLP techniques were applied to the dataset to produce three represented perceptions of the same dataset. The NLP techniques applied were: Word Embedding, Term Frequency (TF) and Term Frequency---Inverse Document Frequency (TF---IDF).
+\textcite{kastrati2020weakly}, established an aspect---orientated opinion---mining model; student feedback was in English (Natural Language)  whereby three unique NLP techniques were applied to the dataset to produce three represented perceptions of the same dataset. The NLP techniques applied were: Word Embedding, Term Frequency (TF) and Term Frequency---Inverse Document Frequency (TF---IDF).
 
 \textcite{kastrati2020weakly}, trained their models using already explored classifiers, Decision Tree, Naïve Bayes, Support Vector Machines and Boosted Graphs on a 1---Directional Convolutional Neural Network (1D---CNN). \textcite{kastrati2020weakly}, found traditional aspects of Machine Learning implementations yielded greater results than that of the sole use of a 1D---CNN.
 
-\textcite{kastrati2020aspect} “Aspect---Based Opinion Mining of Students' Reviews” (2020) to produce a weakly supervised framework aimed at training deep learning models with little to no human interaction. Their proposed framework analyses a desired sentiment at document level and yielded an overall F1 score of 86.13\%  accuracy; they also tested their framework at the aspect level for SA to which yielded an F1 score of 82.1\%.
+\textcite{kastrati2020aspect} “Aspect---Based Opinion Mining of Students' Reviews” (2020) to produce a weakly supervised framework aimed at training deep learning models with little to no human interaction. Their proposed framework analyses a desired sentiment at document level and yielded an overall F1 score of 86.13\%  accuracy; they also tested their framework at the aspect level for sentiment analysis to which yielded an F1 score of 82.1\%. The logic of this paper is applicable to this project as the framework is appropriate as little human involvement will occur when training and saw a similar F1 scoring.
 
 \subsection{Topic Labelling}
 
-his technique is used in conjunction with text mining to automatically handle significant and reoccurring themes and topics within students’ feedback with automatic creation of category labels per survey and section. LDA is a suitable model which can achieve the above, it uses Latent Dirichlet Distributions to group topics as a multinomial distribution of words and is able to associate words based on the probability distribution of the set \parencite{unankard2019topic}.
+This technique is used in conjunction with text mining to automatically handle significant and reoccurring themes and topics within students’ feedback with automatic creation of category labels per survey and section. Latent Dirichlet Allocation (LDA) is a suitable model which can achieve the above, it uses Latent Dirichlet Distributions to group topics as a multinomial distribution of words and is able to associate words based on the probability distribution of the set \parencite{unankard2019topic}.
 
 \subsection{Language Detection}
 
@@ -128,11 +128,11 @@ Phase 3 is simply identifying the most appropriate classification pipeline. Phas
 
 \subsection{Identifying Research Gaps and Including Novelty} \label{section:IdentifyingResearchGapsandIncludingNovelty}
 
-The purpose of reviewing existing literature is to understand how current research and findings are being used to expand a topic’s theory; the aim of this section is to compile accepted theory, identify common themes from background knowledge, and to distinguish potential gaps in existing literature to provoke the creation of a novel NLP idea and methodological schematic.
+The purpose of reviewing existing literature is to understand how current research and findings are being used to expand a topic’s theory; the aim of this section is to compile accepted theories, identify common themes from background knowledge, and to distinguish potential gaps in existing literature to provoke the creation of a novel NLP idea and methodological schematic.
 
 This section identifies two suggestions based on concurrent themes in this report; one is suggestive to the theoretical workings of this paper and the other is suggestive to domain specific feature applications.
 
-Many comparative studies overlook how the interaction between simplistic aspects of traditional approaches can be benefitted by incorporating machine learning aspects such as (C/R) NNs can affect classification performance. As NLP grows, the comparison between POS---Tagging and evolved versions of Word2Vec have also been overlooked, studies such as “Recent Trends in Deep Learning Based Natural Language” by \parencite{young2018recent} directly compare linear implementations of statistical analysis but do not look at non---linear Word2Vec advances such as SPvec \parencite{zhang2020spvec}, this will be expanded on in section \ref{section:DerivedfromLiteratureReview}.
+Many comparative studies overlook how the interaction between simplistic aspects of traditional approaches can be benefitted by incorporating machine learning aspects such as (Convolutional or Recurrent) NNs can affect classification performance. As NLP grows, the comparison between POS---Tagging and evolved versions of Word2Vec have also been overlooked, studies such as “Recent Trends in Deep Learning Based Natural Language” by \parencite{young2018recent} directly compare linear implementations of statistical analysis but do not look at non---linear Word2Vec advances such as SPvec \parencite{zhang2020spvec}, this will be expanded on in section \ref{section:DerivedfromLiteratureReview}.
 
 \textcite{suleiman2019using} state that Word2Vec is an efficient model for word embedding, however think it can be improved with an extension, their proposed model explores how POS---Tagging could enhance the probabilistic values of results returned by Word2Vec models as POS---Tagging calculates a higher vector between feature semantics. Whilst covering Word2Vec implementations with POS---Tagging, they did not cover fundamental analysis of how POS---Tagging effects Word2Vec’s facets such as POS---Tagging with CBOW vs Skip gram algorithms; item 1’s “enhancement” could refer to the use of character n---grams to ensure the importance of Word2Vec word---order. this will be expanded on in section \ref{section:DerivedfromLiteratureReview}.
 

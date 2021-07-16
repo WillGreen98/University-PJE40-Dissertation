@@ -1,6 +1,6 @@
 \chapter{Project Design}
 
-This chapter outlines the design behind each component of the NLP model and the respected process each component may entail, several components will execute more than one step to achieve the desired result. The design is reflected within the final model and each component is broken down to display the functionality and theory within this project. Within section \ref{section:FunctionalRequirements}, it is detailed there won’t be a GUI for the interaction and thus the design section relates to the inner workings of the model itself, that being: system architecture, logistics and theory.
+This chapter outlines the design behind each component of the text classification model and the respected process each component may entail, several components will execute more than one step to achieve the desired result. The design is reflected within the final model and each component is broken down to display the functionality and theory within this project. Within section \ref{section:FunctionalRequirements}, it is detailed there won’t be a GUI for the interaction and thus the design section relates to the inner workings of the model itself, that being: system architecture, logistics and theory.
 
 \section{Classical vs Modern}
 
@@ -38,7 +38,7 @@ Machine learning concepts can be classed as a “black-box” of functionality a
 
 \section{Planning the ML Model Design}
 
-Initial prototyping of the machine learning model for a new amalgamation of NLP techniques helped to indicate what the best route of development could be, the planning stage piggybacked off existing work flowchart diagrams in-order to choose the most appropriate method and technique combination. The sequence flowchart is as follows:
+Initial prototyping of the machine learning model for a new amalgamation of NLP techniques helped to indicate what the best route of development could be, the planning stage piggybacked off existing work flowchart diagrams in-order to apply the most appropriate method and technique combination. The sequence flowchart is as follows:
 
 \begin{figure}[H]
     \centering
@@ -83,26 +83,29 @@ Data Preparing
 
 \section{Model}
 
+% Skip-gram rather than Continuous Bag-Of-Words (CBOW) as it yields better results with large datasets - such as student feedback - skip gram can also be context aware as it converts neighboring lexemes to vectors
 
+% \subsection{Skip-Gram}
 
-Skip-gram rather than (Continuous)Bag-Of-Words (CBOW) as it yields better results with large datasets - such as student feedback - skip gram can also be context aware as it converts neighboring lexemes to vectors
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.49\textwidth]{figures/chapter-5/SkipGramModel.pdf}
+%     \caption[SkipGramModel]{Input flow of Skip-Gram model.
+%     \label{fig:SkipGramModel}}
+% \end{figure}
 
-\subsection{Skip-Gram}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.49\textwidth]{figures/chapter-5/SkipGramModel.pdf}
-    \caption[SkipGramModel]{Input flow of Skip-Gram model.
-    \label{fig:SkipGramModel}}
-\end{figure}
-
-The skip-gram model can be seen as the inverse of the bag-of-words model as it attempts to vectorize neighboring words first to identify corpus context, whereas, bag-of-words takes each lexeme first, produces a vector sum and then categorises each word.
+% The skip-gram model can be seen as the inverse of the bag-of-words model as it attempts to vectorize neighboring words first to identify corpus context, whereas, bag-of-words takes each lexeme first, produces a vector sum and then categorises each word.
 
 % https://machinelearningmastery.com/gentle-introduction-bag-words-model/
 % https://towardsdatascience.com/pos-tagging-using-crfs-ea430c5fb78b#1c6a
+% https://nathanrooy.github.io/posts/2018-03-22/word2vec-from-scratch-with-python-and-numpy/
+% https://stackoverflow.com/questions/37394970/tensorflow-word2vec-cbow-model
 
 \subsection{The Artefact}
 
 POS TAGGING + Machine Learning
 
 "POS tags are another way of labeling text data, in particular we are labeling the to- kens/words in a text. ... In a way POS tags are in themselves features of words; they give classification and context to words that allow us to better understand the purpose of word choice and the meaning of sentences as a whole."
+
+
+% ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
