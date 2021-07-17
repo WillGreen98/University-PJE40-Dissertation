@@ -1,15 +1,116 @@
 \chapter{Project Design - New}
 
-TThis chapter outlines the design behind each component of the text classification model and the respected process each component may entail, several components will execute more than one step to achieve the desired result. The design is reflected within the final model and each component is broken down to display the functionality and theory within this project. \ref{section:FunctionalRequirements}, it is detailed there won’t be a GUI for the interaction and thus the design section relates to the inner workings of the model itself, that being: system architecture, logistics and theory.
+This chapter outlines the design behind each component of the text classification model and the respected process each component may entail, several components will execute more than one step to achieve the desired result. The design is reflected within the final model and each component is broken down to display the functionality and theory within this project. In \autoref{section:FunctionalRequirements}, it is detailed there won’t be a GUI for the interaction and thus the design section relates to the inner workings of the model itself, that being: system architecture, logistics and theory.
 
 \section{Classical vs Modern}
 
-As originally intended, this project would have seen two differing implementations of the same concept, one being of a classical nature implemented as a machine learning model and the other being a modern variation of the same approach, as previously mentioned this project experienced time management issues due to unexpected problems, to which resulted in only focusing on a traditional implementation within a modern model in attempt at a novel approach.
+As originally intended, this project would have demonstrated two differing implementations of the same concept, one being of a classical nature implemented as a machine learning model and the other being a modern variation of the same approach, as previously mentioned this project experienced time management issues due to unexpected problems, to which resulted in only focusing on a traditional implementation within a modern model in attempt at a novel approach.
+
+Classical NLP implementations can be described as:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/chapter-5/ClassicalNLP.pdf}
+    \caption[ClassicalNLP]{Classical NLP pipeline for text classification.
+    \label{fig:ClassicalNLP}}
+\end{figure}
+
+Classical or "traditional" methods for corpus classification include: N-Grams, Hidden Markov Models using Markov Chains, Part-Of-Speech Tagging and Bag-Of-Words. Machine learning concepts can be classed as a “black-box” of functionality as the user does not necessarily see what is being executed within the hidden layers, a high-level abstraction for this project can be generalised into the following diagram:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/chapter-5/MLNLP.pdf}
+    \caption[MachineLearningNLP]{Machine Learning Model for an NLP pipeline for text classification.
+    \label{fig:MLNLP}}
+\end{figure}
+
+\subsection{Model Approach --- Traditional}
+
+The traditional implementation would have been designed based on word-embeddings within a 2D space where word vector values would be used alongside the Bag-Of-Words approach. The combination of Bag-Of-Words with a machine learning model to calculate a word’s vector based on its TF-IDF value would have been the start, such that:
+
+\begin{equation}
+    tf(t,d) = \frac{f_t, _d}{\sum{t \in_d} f _t {_`}, _d}
+\end{equation}
+
+Where the TF-IDF value is how often a lexeme occurs in a given corpus and would have also used the inverse TF-IDF value as the project model covers multiple datasets, such that:
+
+\begin{equation}
+    idf(t, D) = \log \frac{N}{|d \in D : t \in d|}
+\end{equation}
+
+Where the inverse TF-IDF value is represents how rare a word is in a given corpus.
+
+\subsection{Limitations of Bag-Of-Words}
+
+As there is a specific domain for this project, it is important to focus on the limitations for potential methods, CBOW models have demonstrated high training accuracy and is a relatively simple model to implement, it is naturally flexible as it can be trained on different datasets for a specific context; however, it does have disadvantages for classification and text prediction. Universities host students from different backgrounds and levels of education which can imply issues when training datasets, these issues can impact: the
+
+\begin{itemize}
+    \item \textbf{\textit{Vocabulary:}} Students may have varying output to describe the same context, this can create confusion for training.
+    \item \textbf{\textit{Frequency:}} The frequency of a word may influence its power in a dataset.
+    \item \textbf{\textit{Context:}} If students describe the same situation in a different way, some words may lose semantic meaning or be interpreted incorrectly, for example isolating neologisms, synonyms or semantic change.
+\end{itemize}
 
 
 
-\subsection{Model Approach - Modern}
+\subsection{Model Approach --- Modern}
 
-This section will read in reverse order because of the implementation phase; the modern implementation would have
+Word2Vec with Skip-Gram
 
-\subsection{Model Approach - Classical}
+Modern or "contemporary" methods for corpus classification include:
+
+The modern implementation would have been based around Word2Vec implemented in a machine learning model for Sentiment Analysis which can be seen as a subcategory of text classification.
+
+
+The word2vec implementation would produce vector values for identified key words and plot them as such:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/chapter-5/Example-Word-Vector.pdf}
+    \caption[ExampleWordVector]{Example of student satisfaction vector.
+    \label{fig:Example-Word-Vector}}
+\end{figure}
+
+\section{Planning the ML Model Design}
+
+Initial prototyping of the machine learning model for a new amalgamation of NLP techniques helped to indicate what the best route of development could be, the planning stage piggybacked off existing work flowchart diagrams in-order to apply the most appropriate method and technique combination. The sequence flowchart is as follows:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/chapter-5/GooglePlan.pdf}
+    \caption[GooglePlan]{Text Classification Flowchart \parencite{google2021TCF}.
+    \label{fig:GooglePlan}}
+\end{figure}
+
+\section{Supervision}
+
+The development of the project model is based on a supervised approach due to the datasets located, it was most appropriate to use a supervised approach due to the datasets having no labels or lexical categories to train the model on; the model has user input to account for missing labels on data which have been manually and algorithmically added. The supervision for this project can be represented as the following diagram:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/chapter-5/SupervisedLearningChart.pdf}
+    \caption[SupervisedLearning]{Sequence control for Supervised learning.
+    \label{fig:SupervisedLearningChart}}
+\end{figure}
+
+\section{Pipeline Design}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/chapter-5/Pipeline.pdf}
+    \caption[MLTCPipeline]{Pipeline for model classification.
+    \label{fig:MLTCPipeline}}
+\end{figure}
+
+There are five main steps for a text classification pipeline:
+
+\begin{enumerate}
+    \item \textbf{\textit{Pre-processing}}: prepare the raw dataset to be trained.
+    \item \textbf{\textit{Splitting}}: split the processed dataset to be trained and validated.
+    \item \textbf{\textit{Tuning}}: identity valuable parameters within trained data.
+    \item \textbf{\textit{Training}}: train the current iteration of the model with updated hyper-parameters.
+    \item \textbf{\textit{Testing}}: test and collect statistics for analysis to make further predictions.
+\end{enumerate}
+
+\section{Data Preparing and Pre---processing}
+
+Data Preparing
