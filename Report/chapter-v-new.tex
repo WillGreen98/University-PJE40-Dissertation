@@ -47,21 +47,12 @@ As there is a specific domain for this project, it is important to focus on the 
 \begin{itemize}
     \item \textbf{\textit{Vocabulary:}} Students may have varying output to describe the same context, this can create confusion for training.
     \item \textbf{\textit{Frequency:}} The frequency of a word may influence its power in a dataset.
-    \item \textbf{\textit{Context:}} If students describe the same situation in a different way, some words may lose semantic meaning or be interpreted incorrectly, for example isolating neologisms, synonyms or semantic change.
+    \item \textbf{\textit{Context:}} If students describe the same situation in a different way, some words may lose semantic meaning or be interpreted incorrectly, for example isolating neologisms, synonyms, colloquialism, or semantic change.
 \end{itemize}
-
-
 
 \subsection{Model Approach --- Modern}
 
-Word2Vec with Skip-Gram
-
-Modern or "contemporary" methods for corpus classification include:
-
-The modern implementation would have been based around Word2Vec implemented in a machine learning model for Sentiment Analysis which can be seen as a subcategory of text classification.
-
-
-The word2vec implementation would produce vector values for identified key words and plot them as such:
+Modern or "contemporary" methods for corpus classification include: \ldots The modern implementation would have been based around Word2Vec implemented in a machine learning model for Sentiment Analysis which can be seen as a subcategory of text classification. The word2vec implementation would produce vector values for identified key words and plot them as such:
 
 \begin{figure}[H]
     \centering
@@ -69,6 +60,72 @@ The word2vec implementation would produce vector values for identified key words
     \caption[ExampleWordVector]{Example of student satisfaction vector.
     \label{fig:Example-Word-Vector}}
 \end{figure}
+
+\subsection{Word2Vec Skip-Gram}
+
+Skip-gram rather than Continuous Bag-Of-Words (CBOW [which is the modern implementation of Bag-Of-Words]) as it yields better results with large datasets - such as student feedback - skip gram can also be context aware as it converts neighboring lexemes to vectors.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.49\textwidth]{figures/chapter-5/SkipGramModel.pdf}
+    \caption[SkipGramModel]{Input flow of Skip-Gram model.
+    \label{fig:SkipGramModel}}
+\end{figure}
+
+The skip-gram model can be seen as the inverse of the bag-of-words model as it attempts to vectorize neighboring words first to identify corpus context, whereas, bag-of-words takes each lexeme first, produces a vector sum and then categorises each word.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/chapter-5/SkipGramNetwork.pdf}
+    \caption[SkipGramNetwork]{Skip-Gram implementation for Word2Vec network architecture.
+    \label{fig:SkipGramNetwork}}
+\end{figure}
+
+The Skip-Gram's network architecture is similar to the diagram displayed in \autoref{fig:MLNLP}, the diagram above is another level of abstraction as to how this project will make use of machine learning fundamentals.
+
+\subsection{One-Hot Encoding}
+
+\subsection{Forward Passes}
+
+\begin{equation}
+    h = x^T W
+\end{equation}
+
+
+\begin{equation}
+    h = W_{(k,:)}^{T} \coloneqq v_{w_I}^{T}
+\end{equation}
+
+
+\begin{equation}
+    u_{c} = W'^{T}h = W'^{T} W^{T}x
+\end{equation}
+
+
+\begin{equation}
+    y_{c} = Softmax(u)
+\end{equation}
+
+
+\begin{equation}
+    p(w_{c,_j} = w_{O,_c} | w_{I}) = y_{c,_j} = \frac{exp(u_{c_j})}{\sum_{j' = 1}^{V} exp(u_{j'})}
+\end{equation}
+
+
+\begin{equation}
+    u_{c,_j} = u_{j} = {v'_{w_j}} ^ T \cdot h
+\end{equation}
+
+\subsection{Backpropagation}
+
+% Needs remaking
+% \begin{equation} \label{}
+%     \begin{split}
+%         Er & = - \log \mathbb{P} (w_O_,{_1} , \ldots, w_O_,{_c} | w_{I}) \\
+%            & = - \log \prod_{c=1}^{C} \frac{exp(u_c,_{j_{c}^{*}})}{\sum_{j'=1}^{V} exp(u_j')} \\
+%            & = - \sum_{c=1}^{C} u_{j_{c}^{*}} + C \cdot \log \sum_{j'=1} ^ {V} exp(u_j_')
+%     \end{split}
+% \end{equation}
 
 \section{Planning the ML Model Design}
 
