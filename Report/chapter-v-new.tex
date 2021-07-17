@@ -85,6 +85,26 @@ The Skip-Gram's network architecture is similar to the diagram displayed in \aut
 
 \subsection{One-Hot Encoding}
 
+Encoding each important lexeme in a given dataset is helpful for the model to distinguish the level of importance, outlined as context, the diagram shown above in \autoref{fig:SkipGramModel} takes a 1D vector matrice as the input layer which allows for the model to acceptably one-hot encode each lexeme datum as a numeric value.
+
+\begin{multicols}{2}
+    \begin{equation*}
+        Teach =
+        \begin{bmatrix}
+            0 & 0 & 0 & 0 & 1 & 0
+        \end{bmatrix}
+    \end{equation*}
+
+    \begin{equation*}
+        Teaching =
+        \begin{bmatrix}
+            0 & 0 & 0 & 0 & 1 & 0
+        \end{bmatrix}
+    \end{equation*}
+\end{multicols}
+
+This equates to differing versions of the same word to have the same influence when training the mode.
+
 \subsection{Forward Passes}
 
 \begin{equation}
