@@ -256,6 +256,22 @@ There are five main steps for a text classification pipeline:
     \item \textbf{\textit{Tuning}}: identity valuable parameters within trained data.
     \item \textbf{\textit{Training}}: train the current iteration of the model with updated hyper-parameters.
     \item \textbf{\textit{Testing}}: test and collect statistics for analysis to make further predictions.
-\end{enumerate}
+\end{enumerate} \newpage
 
-\section{Data Preparing and Pre---processing}
+\section{Data Prep, Pre-processing, and Analytics}
+
+Preparing and pre-processing of the parsed data enables meaning to be allocated to the processed classification information, bypassing the implementation of a pre-processing step will ruin the chances of yielding valid returned data and will most likely detract meaning from any results throughout data analysis. The preperation and pre---preprocessing of data will be completed with the use of NLP libraries such as `pandas' and `sklearn'.
+
+\subsection{Data Organisation and Binding}
+
+The initial steps for data organisation will be to tidy the datasets procured from Kaggle as they held a lot of useless information and or columns with little weight. The first organisation step is to merge multiple CSV files and their respected columns into an easily readable format. The removal of unnecessary columns will aid the preprocessing as the dataset will be smaller.
+
+\subsection{Pre-processing}
+
+The following methods of preprocessing will be applied to a given dataset:
+
+\begin{itemize}
+    \item \textbf{\textit{Punctuation:}} removal of all unnecessary punctuation, where punctuation includes the regular expression: \verb|["[.!?\\-]"]|.
+    \item \textbf{\textit{Missing Values:}} word features with a percentage higher than the defined threshold for missing values will be sliced from the dataset as missing features will cause unreliable training data.
+    \item \textbf{\textit{Collinear features:}} features in which are highly correlated with another lexical unit will be removed as these features can decrease overall performance on training data, this is due to higher variance of the similar features and lower interpretability of the model.
+\end{itemize}
