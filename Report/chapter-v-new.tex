@@ -47,7 +47,7 @@ As there is a specific domain for this project, it is important to focus on the 
 \begin{itemize}
     \item \textbf{\textit{Vocabulary:}} Students may have varying output to describe the same context, this can create confusion for training.
     \item \textbf{\textit{Frequency:}} The frequency of a word may influence its power in a dataset.
-    \item \textbf{\textit{Context:}} If students describe the same situation in a different way, some words may lose semantic meaning or be interpreted incorrectly, for example isolating neologisms, synonyms, colloquialism, or semantic change.
+    \item \textbf{\textit{Context:}} If students describe the same situation in a different way, some words may lose semantic meaning or be interpreted incorrectly, for example isolating neologisms, synonyms, colloquialism, polysemes, or semantic change.
 \end{itemize}
 
 \subsection{Model Approach --- Modern}
@@ -57,7 +57,7 @@ Modern or "contemporary" methods for corpus classification include: \ldots The m
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{figures/chapter-5/Example-Word-Vector.pdf}
-    \caption[ExampleWordVector]{Example of student satisfaction vector.
+    \caption[ExampleWordVector]{Example of student satisfaction vector graph in 2d space.
     \label{fig:Example-Word-Vector}}
 \end{figure}
 
@@ -72,7 +72,9 @@ Skip-gram rather than Continuous Bag-Of-Words (CBOW [which is the modern impleme
     \label{fig:SkipGramModel}}
 \end{figure}
 
-The skip-gram model can be seen as the inverse of the bag-of-words model as it attempts to vectorize neighboring words first to identify corpus context, whereas, bag-of-words takes each lexeme first, produces a vector sum and then categorises each word.
+The skip-gram model can be seen as the inverse of the bag-of-words model as it attempts to vectorize neighboring words first to identify corpus context, whereas, bag-of-words takes each lexeme first, produces a vector sum and then categorises each word. \newpage
+
+The Skip-Gram's network architecture is similar to the diagram displayed in \autoref{fig:MLNLP}, the diagram above is another level of abstraction as to how this project will make use of machine learning fundamentals.
 
 \begin{figure}[H]
     \centering
@@ -81,79 +83,90 @@ The skip-gram model can be seen as the inverse of the bag-of-words model as it a
     \label{fig:SkipGramNetwork}}
 \end{figure}
 
-The Skip-Gram's network architecture is similar to the diagram displayed in \autoref{fig:MLNLP}, the diagram above is another level of abstraction as to how this project will make use of machine learning fundamentals.
-
 \subsection{One-Hot Encoding}
 
-Encoding each important lexeme in a given dataset is helpful for the model to distinguish the level of importance, outlined as context, the diagram shown above in \autoref{fig:SkipGramModel} takes a 1D vector matrice as the input layer which allows for the model to acceptably one-hot encode each lexeme datum as a numeric value.
+Encoding each significant lexeme in a given dataset is helpful for the model to distinguish the level of importance, outlined as context, the diagram shown above in \autoref{fig:SkipGramModel} takes a 1D row vector as the input layer which allows for the model to acceptably one-hot encode each lexeme unit as a numeric value.
 
 \begin{multicols}{2}
     \begin{equation*}
         "Teach" =
         \begin{bmatrix}
-            0 & 0 & 0 & 0 & 1 & 0
+            0, & 0, & 0, & 0, & 1, & 0
         \end{bmatrix}
     \end{equation*}
 
     \begin{equation*}
         "Teaching" =
         \begin{bmatrix}
-            0 & 0 & 0 & 0 & 1 & 0
+            0, & 0, & 0, & 0, & 1, & 0
         \end{bmatrix}
     \end{equation*}
 \end{multicols}
 
-This equates to differing versions of the same word to have the same influence when training the mode.
+This equates to differing versions of the same word (root + free or bound morpheme [affix]) to have the same influence when being parsed forward within the training model.
 
-\subsection{Forward Passes}
+\subsection{Forward Propagation}
+
+Once the corpus text is encoded as an acceptable 1D matrix, it can then be parsed to the first hidden layer's node:
 
 \begin{equation}
     h = x^T W
 \end{equation}
-
+`x' represents the row vector, `h' can be taken as the column height ($[x]^T$ of the vector `W' where `h' is the `$k_{th}$' column.
 
 \begin{equation}
     h = W_{(k,:)}^{T} \coloneqq v_{w_I}^{T}
 \end{equation}
+As each lexeme unit parses through the hidden layer nodes, the exit value needs to be calculated:
 
-
-\begin{equation}
+\begin{equation} \label{eq:u_cDefinition}
     u_{c} = W'^{T}h = W'^{T} W^{T}x
 \end{equation}
+For simplicity, $u_{c}$ will transpose each unit through the model in its entirety, however, the value(s) of $u_{c}$ cause performancy and memory issues in the model. Thus, \textbf{\textit{softmax}} will be used to slice the vector value of $u_{c}$ to [0,1].
 
-
-\begin{equation}
+\begin{equation*}
     y_{c} = Softmax(u)
-\end{equation}
-
+\end{equation*}
 
 \begin{equation}
     p(w_{c,_j} = w_{O,_c} | w_{I}) = y_{c,_j} = \frac{exp(u_{c_,j})}{\sum_{j' = 1}^{V} exp(u_{j'})}
 \end{equation}
+`x' represents the center word $w(T)$ of a vector where $W'$ will yield the softmax value of $u_{c}$, this ensures the vector of $w(T)$ will have exact values of input for `x', where:
 
+\begin{multicols}{2}
+    \begin{equation*}
+        u_{c,_j} = u_{j} = {v'_{w_j}} ^ T \cdot h
+    \end{equation*}
+
+    \begin{equation}
+        % TODO rewrite mathematically in set theory notation
+        c=1 \ldots |C|
+    \end{equation}
+\end{multicols}
+${v'_{w_j}}$ represents the exit vector for the $j^{th}$ lexeme unit in $w_{j}$ (the corpus vocabulary).
+
+\subsection{Backward Propagation}
+
+As stated below \autoref{eq:u_cDefinition}, the transposition of each unit $u_{c}$ is simple where node weight is not considered. To account for the weight of the model matrices $W$ and $W'$, the Stochastic Gradient Descent method is applied, which in turn will optimise the backward propagation of node errors; when training the model, errors are bound to occur, to which a loss function is needed to calculate each layers efficiency.
 
 \begin{equation}
-    u_{c,_j} = u_{j} = {v'_{w_j}} ^ T \cdot h
-\end{equation}
-
-\subsection{Backpropagation}
-
-% Needs remaking
-\begin{equation} \label{}
     \begin{split}
-        Er & = - \log \mathbb{P} (w_{O_,{_1}} , \ldots, w_{O_{,c}} | w_{I}) \\
-           & = - \log \prod_{c=1}^{C} \frac{exp(u_{c,j_{c}^{*}})}{\sum_{j'=1}^{V} exp(u_{j'})}  \\
-           & = - \sum_{c=1}^{C} u_{j_{c}^{*}} + C \cdot \log \sum_{j'=1} ^ {V} exp(u_{j'})
+        Error (E) & = - \log \mathbb{P} (w_{O_,{_1}} , \ldots, w_{O_{,c}} | w_{I}) \\
+                  & = - \log \prod_{c=1}^{C} \frac{exp(u_{c,j_{c}^{*}})}{\sum_{j'=1}^{V} exp(u_{j'})}  \\
+                  & = - \sum_{c=1}^{C} u_{j_{c}^{*}} + C \cdot \log \sum_{j'=1} ^ {V} exp(u_{j'})
     \end{split}
 \end{equation}
+${j_{c}^{*}}$ represents the exit vector column's index within the vector's vocabulary. Once loss is calculated, the model can apply the \textbf{\textit{chain rule}} for weight error classification within $W$ and $W'$. This is achieved by obtaining the partial derivative of Error(E) of each exit node $u_{c,_j}$.
 
 \begin{equation}
     \frac{\partial E}{\partial u_{c,_j}} = y_{c,_j} - t_{c,_j} \coloneqq e_{c,_j}
 \end{equation}
+$t_{c,_j}$ represents vector $u$'s \textbf{\textit{Ground Truth}}; [$t_{c,_j}$]'s state of hypothesis can be represented as the following definition:
 
 \begin{equation}
     EI_j = \sum_{c=1}^{C} e_{c,_j} = \sum_{c=1}^{C} (y_{c,_j} - t_{c,_j}) = \frac{\partial E}{\partial u_{j}}
 \end{equation}
+$EI_{j}$ represents the \textbf{\textit{Row-Wise Sum}} as a column vector in attempt to account for word context errors for $w(T)$; \textbf{\textit{backpropagation}} can then occur by obtaining the partial derivative of Error(E) within matrix $W'$.
 
 \begin{equation} \label{}
     \begin{split}
@@ -162,17 +175,20 @@ This equates to differing versions of the same word to have the same influence w
                                             & = EI_{j} \cdot h_{i}
     \end{split}
 \end{equation}
+When backpropagation occurs, the Stochastic Gradient Descent is redefined in terms of the matrix $W'$:
 
 \begin{equation}
     w'^{(new)}_{i,j} = w'^{(old)}_{i,j} - \eta \cdot EI_{j} \cdot h_{i}
 \end{equation}
+$\eta$ represents the model's training (learning). Once the learning rate has been established, the model can update the distribution of errors between the model layers, particularly between unit input and the hidden layer whereby the partial derivative is weighted against an error from a hidden layer. This can be calculated with:
 
-\begin{equation} \label{}
+\begin{equation}
     \begin{split}
         \frac{\partial E}{\partial h_{i}} & = \sum_{j=1}^{V} \frac{\partial E}{\partial u_{j}} \cdot \frac{\partial u_{j}}{\partial h_{i}} \\
                                           & = \sum_{j=1}^{V} EI_{j} \cdot w'_{ij}
     \end{split}
 \end{equation}
+As errors are calculated between the input layer and the hidden layer accounting for error weight, it is possible to calculate the weighted loss of matrix $W$ by taking the partial derivatives of Error(E) against the partial derivative of an index within matrix $W$, as such:
 
 \begin{equation} \label{}
     \begin{split}
@@ -180,22 +196,26 @@ This equates to differing versions of the same word to have the same influence w
                                            & = \sum_{j=1}^{V} EI_{j} \cdot w'_{ij} \cdot x_{k}
     \end{split}
 \end{equation}
+The weight of the Stochastic Gradient Descent is redefined in terms of the matrix $W$:
+
 
 \begin{equation}
     w^{(new)}_{i,j} = w^{(old)}_{i,j} - \eta \cdot \sum_{j=1}^{V} EI_{j} \cdot w'_{ij} \cdot x_{j}
 \end{equation}
+The fundamental functionality has been outlined in theory but in practice will be enough to train the given Skip-Gram Network in \autoref{fig:SkipGramNetwork}.
 
-\begin{equation}
-    \textbf{\textit{score}}(w_{a}, w_{b}) = \frac{\textbf{\textit{count}}(w_{a}w_{b}) - \delta}{\textbf{\textit{count}}(w_{a}) \times \textbf{\textit{count}}(w_{b})}
-\end{equation}
+% TODO rewrite mathematical improvements to include future work.
+% \begin{equation}
+%     \textbf{\textit{score}}(w_{a}, w_{b}) = \frac{\textbf{\textit{count}}(w_{a}w_{b}) - \delta}{\textbf{\textit{count}}(w_{a}) \times \textbf{\textit{count}}(w_{b})}
+% \end{equation}
 
-\begin{equation}
-    P(w_{i}) = 1 - \sqrt{\frac{t}{f(w_{i})}}
-\end{equation}
+% \begin{equation}
+%     P(w_{i}) = 1 - \sqrt{\frac{t}{f(w_{i})}}
+% \end{equation}
 
-\begin{equation}
-    \log p(w | w_{i}) = \log \sigma ({v'}_{w}^{T} v_{w_{I}}) + \sum_{i=k}^{K} E_{w_{i}P_{n}(w)} \left [ \log \sigma (-{v'}_{w}^{T} v_{w_{I}}) \right ]
-\end{equation}
+% \begin{equation}
+%     \log p(w | w_{i}) = \log \sigma ({v'}_{w}^{T} v_{w_{I}}) + \sum_{i=k}^{K} E_{w_{i}P_{n}(w)} \left [ \log \sigma (-{v'}_{w}^{T} v_{w_{I}}) \right ]
+% \end{equation}
 
 \section{Planning the ML Model Design}
 
@@ -239,5 +259,3 @@ There are five main steps for a text classification pipeline:
 \end{enumerate}
 
 \section{Data Preparing and Pre---processing}
-
-Data Preparing
