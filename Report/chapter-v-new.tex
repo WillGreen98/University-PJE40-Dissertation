@@ -89,14 +89,14 @@ Encoding each important lexeme in a given dataset is helpful for the model to di
 
 \begin{multicols}{2}
     \begin{equation*}
-        Teach =
+        "Teach" =
         \begin{bmatrix}
             0 & 0 & 0 & 0 & 1 & 0
         \end{bmatrix}
     \end{equation*}
 
     \begin{equation*}
-        Teaching =
+        "Teaching" =
         \begin{bmatrix}
             0 & 0 & 0 & 0 & 1 & 0
         \end{bmatrix}
@@ -139,13 +139,13 @@ This equates to differing versions of the same word to have the same influence w
 \subsection{Backpropagation}
 
 % Needs remaking
-% \begin{equation} \label{}
-%     \begin{split}
-%         Er & = - \log \mathbb{P} (w_O_,{_1} , \ldots, w_O_,{_c} | w_{I}) \\
-%            & = - \log \prod_{c=1}^{C} \frac{exp(u_c,_{j_{c}^{*}})}{\sum_{j'=1}^{V} exp(u_j')} \\
-%            & = - \sum_{c=1}^{C} u_{j_{c}^{*}} + C \cdot \log \sum_{j'=1} ^ {V} exp(u_j_')
-%     \end{split}
-% \end{equation}
+\begin{equation} \label{}
+    \begin{split}
+        Er & = - \log \mathbb{P} (w_{O_,{_1}} , \ldots, w_{O_{,c}} | w_{I}) \\
+           & = - \log \prod_{c=1}^{C} \frac{exp(u_{c,j_{c}^{*}})}{\sum_{j'=1}^{V} exp(u_{j'})}  \\
+           & = - \sum_{c=1}^{C} u_{j_{c}^{*}} + C \cdot \log \sum_{j'=1} ^ {V} exp(u_{j'})
+    \end{split}
+\end{equation}
 
 \section{Planning the ML Model Design}
 
