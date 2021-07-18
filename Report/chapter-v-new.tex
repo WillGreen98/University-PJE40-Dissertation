@@ -128,7 +128,7 @@ This equates to differing versions of the same word to have the same influence w
 
 
 \begin{equation}
-    p(w_{c,_j} = w_{O,_c} | w_{I}) = y_{c,_j} = \frac{exp(u_{c_j})}{\sum_{j' = 1}^{V} exp(u_{j'})}
+    p(w_{c,_j} = w_{O,_c} | w_{I}) = y_{c,_j} = \frac{exp(u_{c_,j})}{\sum_{j' = 1}^{V} exp(u_{j'})}
 \end{equation}
 
 
@@ -145,6 +145,56 @@ This equates to differing versions of the same word to have the same influence w
            & = - \log \prod_{c=1}^{C} \frac{exp(u_{c,j_{c}^{*}})}{\sum_{j'=1}^{V} exp(u_{j'})}  \\
            & = - \sum_{c=1}^{C} u_{j_{c}^{*}} + C \cdot \log \sum_{j'=1} ^ {V} exp(u_{j'})
     \end{split}
+\end{equation}
+
+\begin{equation}
+    \frac{\partial E}{\partial u_{c,_j}} = y_{c,_j} - t_{c,_j} \coloneqq e_{c,_j}
+\end{equation}
+
+\begin{equation}
+    EI_j = \sum_{c=1}^{C} e_{c,_j} = \sum_{c=1}^{C} (y_{c,_j} - t_{c,_j}) = \frac{\partial E}{\partial u_{j}}
+\end{equation}
+
+\begin{equation} \label{}
+    \begin{split}
+        \frac{\partial E}{\partial w'_{ij}} & = \sum_{c=1}^{C} \frac{\partial E}{\partial u_{c_{,j}}} \cdot \frac{\partial u_{c_{,j}}}{\partial w'_{i_{,j}}} \\
+                                            & = \sum_{c=1}^{C} (y_{c,_j} - t_{c,_j}) \\
+                                            & = EI_{j} \cdot h_{i}
+    \end{split}
+\end{equation}
+
+\begin{equation}
+    w'^{(new)}_{i,j} = w'^{(old)}_{i,j} - \eta \cdot EI_{j} \cdot h_{i}
+\end{equation}
+
+\begin{equation} \label{}
+    \begin{split}
+        \frac{\partial E}{\partial h_{i}} & = \sum_{j=1}^{V} \frac{\partial E}{\partial u_{j}} \cdot \frac{\partial u_{j}}{\partial h_{i}} \\
+                                          & = \sum_{j=1}^{V} EI_{j} \cdot w'_{ij}
+    \end{split}
+\end{equation}
+
+\begin{equation} \label{}
+    \begin{split}
+        \frac{\partial E}{\partial W_{ki}} & = \frac{\partial E}{\partial h_{i}} \cdot \frac{\partial h_{i}}{\partial w_{ki}} \\
+                                           & = \sum_{j=1}^{V} EI_{j} \cdot w'_{ij} \cdot x_{k}
+    \end{split}
+\end{equation}
+
+\begin{equation}
+    w^{(new)}_{i,j} = w^{(old)}_{i,j} - \eta \cdot \sum_{j=1}^{V} EI_{j} \cdot w'_{ij} \cdot x_{j}
+\end{equation}
+
+\begin{equation}
+    \textbf{\textit{score}}(w_{a}, w_{b}) = \frac{\textbf{\textit{count}}(w_{a}w_{b}) - \delta}{\textbf{\textit{count}}(w_{a}) \times \textbf{\textit{count}}(w_{b})}
+\end{equation}
+
+\begin{equation}
+    P(w_{i}) = 1 - \sqrt{\frac{t}{f(w_{i})}}
+\end{equation}
+
+\begin{equation}
+    \log p(w | w_{i}) = \log \sigma ({v'}_{w}^{T} v_{w_{I}}) + \sum_{i=k}^{K} E_{w_{i}P_{n}(w)} \left [ \log \sigma (-{v'}_{w}^{T} v_{w_{I}}) \right ]
 \end{equation}
 
 \section{Planning the ML Model Design}
