@@ -4,7 +4,7 @@ This chapter outlines the design behind each component of the text classificatio
 
 \section{Classical vs Modern}
 
-As originally intended, this project would have demonstrated two differing implementations of the same concept, one being of a classical nature implemented as a machine learning model and the other being a modern variation of the same approach, as previously mentioned this project experienced time management issues due to unexpected problems, to which resulted in only focusing on a traditional implementation within a modern model in attempt at a novel approach.
+As originally intended, this project would have demonstrated two differing implementations of the same concept, one being of a classical nature implemented as a machine learning model and the other being a modern variation of the same approach, as previously mentioned this project experienced time management issues due to unexpected problems, to which resulted in only focusing on a traditional implementation within a modern model in attempt at a novel approach. \newpage
 
 Classical NLP implementations can be described as:
 
@@ -24,7 +24,7 @@ Classical or "traditional" methods for corpus classification include: N-Grams, H
     \label{fig:MLNLP}}
 \end{figure}
 
-\subsection{Model Approach --- Traditional}
+\section{Model Approach --- Traditional (A)} \label{sub:C5ModelATraditionalA}
 
 The traditional implementation would have been designed based on word-embeddings within a 2D space where word vector values would be used alongside the Bag-Of-Words approach. The combination of Bag-Of-Words with a machine learning model to calculate a word’s vector based on its TF-IDF value would have been the start, such that:
 
@@ -42,7 +42,7 @@ Where the inverse TF-IDF value is represents how rare a word is in a given corpu
 
 \subsection{Limitations of Bag-Of-Words}
 
-As there is a specific domain for this project, it is important to focus on the limitations for potential methods, CBOW models have demonstrated high training accuracy and is a relatively simple model to implement, it is naturally flexible as it can be trained on different datasets for a specific context; however, it does have disadvantages for classification and text prediction. Universities host students from different backgrounds and levels of education which can imply issues when training datasets, these issues can impact: the
+As there is a specific domain for this project, it is important to focus on the limitations for potential methods, BOW models have demonstrated high training accuracy and is a relatively simple model to implement, it is naturally flexible as it can be trained on different datasets for a specific context; however, it does have disadvantages for classification and text prediction. Universities host students from different backgrounds and levels of education which can imply issues when training datasets, these issues can impact: the
 
 \begin{itemize}
     \item \textbf{\textit{Vocabulary:}} Students may have varying output to describe the same context, this can create confusion for training.
@@ -50,7 +50,11 @@ As there is a specific domain for this project, it is important to focus on the 
     \item \textbf{\textit{Context:}} If students describe the same situation in a different way, some words may lose semantic meaning or be interpreted incorrectly, for example isolating neologisms, synonyms, colloquialism, polysemes, or semantic change.
 \end{itemize}
 
-\subsection{Model Approach --- Modern}
+\section{Model Approach --- Traditional (B)} \label{sub:C5ModelATraditionalB}
+
+POS---TAGGING
+
+\section{Model Approach --- Modern}
 
 Modern or "contemporary" methods for corpus classification include: \ldots The modern implementation would have been based around Word2Vec implemented in a machine learning model for Sentiment Analysis which can be seen as a subcategory of text classification. The word2vec implementation would produce vector values for identified key words and plot them as such:
 
@@ -204,7 +208,7 @@ The weight of the Stochastic Gradient Descent is redefined in terms of the matri
 \end{equation}
 The fundamental functionality has been outlined in theory but in practice will be enough to train the given Skip-Gram Network in \autoref{fig:SkipGramNetwork}.
 
-\section{Planning the ML Model Design}
+\section{Planning the Network Architecture}
 
 Initial prototyping of the machine learning model for a new amalgamation of NLP techniques helped to indicate what the best route of development could be, the planning stage piggybacked off existing work flowchart diagrams in-order to apply the most appropriate method and technique combination. The sequence flowchart is as follows:
 
@@ -245,9 +249,9 @@ There are five main steps for a text classification pipeline:
     \item \textbf{\textit{Testing}}: test and collect statistics for analysis to make further predictions.
 \end{enumerate} \newpage
 
-\section{Data Prep, Pre-processing, and Analytics}
+\section{Data Preparation, Pre-processing, and Analytics}
 
-Preparing and pre-processing of the parsed data enables meaning to be allocated to the processed classification information, bypassing the implementation of a pre-processing step will ruin the chances of yielding valid returned data and will most likely detract meaning from any results throughout data analysis. The preperation and pre---preprocessing of data will be completed with the use of NLP libraries such as `pandas' and `sklearn'.
+Preparing and pre-processing of the parsed data enables meaning to be allocated to the processed classification information, bypassing the implementation of a pre-processing step will ruin the chances of yielding valid returned data and will most likely detract meaning from any results throughout data analysis. The preparation and pre---preprocessing of data will be completed with the use of NLP libraries such as `pandas' and `sklearn'.
 
 \subsection{Data Organisation and Binding}
 
