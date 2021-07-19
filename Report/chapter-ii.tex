@@ -75,7 +75,29 @@ However, textual classification is still an area of development and is not well-
 
 \section{Related Research}
 
-This section will predominantly concentrate on considerable studies of similar nature, these studies conduct research spotlighting technical performance of differing textual and contextual classification methods using different datasets and NLP models. Analysing previous literature will guide further development as they will give support towards vital features that are a prerequisite for essential system requirements, to the contrary, previous literature may outline features that are not of importance and potentially expose gaps in current research.
+This section will predominantly concentrate on considerable studies of similar nature and existing solutions such as open-sourse libraries, the focused studies conduct research spotlighting technical performance of differing textual and contextual classification methods using different datasets and NLP models.
+
+\subsection{Related Systems and Libraries}
+% TODO insert table with huggingface spacy etc...
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c c c c|}
+        \hline
+        Software Title & Type & Pros & Cons \\ [0.5ex]
+        \hline
+        Bert & Library & Everything & Nothing \\
+        \hline
+        Hugging Face & Library & Everything & Nothing \\
+        \hline
+        SpaCy & Library & Everything & Nothing \\ [1ex]
+        \hline
+    \end{tabular}
+   \caption{Aggregation of current available software systems and libraries.}
+   \label{tab:C2RelatedSystems}
+\end{table}
+
+Analysing previous literature will guide further development as they will give support towards vital features that are a prerequisite for essential system requirements, to the contrary, previous literature may outline features that are not of importance and potentially expose gaps in current research.
 
 \subsection{Combination Classifiers}
 
@@ -132,7 +154,7 @@ The purpose of reviewing existing literature is to understand how current resear
 
 This section identifies two suggestions based on concurrent themes in this report; one is suggestive to the theoretical workings of this paper and the other is suggestive to domain specific feature applications.
 
-Many comparative studies overlook how the interaction between simplistic aspects of traditional approaches can be benefitted by incorporating machine learning aspects such as (Convolutional or Recurrent) NNs can affect classification performance. As NLP grows, the comparison between POS---Tagging and evolved versions of Word2Vec have also been overlooked, studies such as “Recent Trends in Deep Learning Based Natural Language” by \parencite{young2018recent} directly compare linear implementations of statistical analysis but do not look at non---linear Word2Vec advances such as SPvec \parencite{zhang2020spvec}, this will be expanded on in section \ref{section:DerivedfromLiteratureReview}.
+Many comparative studies overlook how the interaction between simplistic aspects of traditional approaches can be benefitted by incorporating machine learning aspects such as (Convolutional or Recurrent) Neural Networks can affect classification performance. As NLP grows, the comparison between POS---Tagging and evolved versions of Word2Vec have also been overlooked, studies such as “Recent Trends in Deep Learning Based Natural Language” by \parencite{young2018recent} directly compare linear implementations of statistical analysis but do not look at non---linear Word2Vec advances such as SPvec \parencite{zhang2020spvec}, this will be expanded on in section \ref{section:DerivedfromLiteratureReview}.
 
 \textcite{suleiman2019using} state that Word2Vec is an efficient model for word embedding, however think it can be improved with an extension, their proposed model explores how POS---Tagging could enhance the probabilistic values of results returned by Word2Vec models as POS---Tagging calculates a higher vector between feature semantics. Whilst covering Word2Vec implementations with POS---Tagging, they did not cover fundamental analysis of how POS---Tagging effects Word2Vec’s facets such as POS---Tagging with CBOW vs Skip gram algorithms; item 1’s “enhancement” could refer to the use of character n---grams to ensure the importance of Word2Vec word---order. this will be expanded on in section \ref{section:DerivedfromLiteratureReview}.
 
