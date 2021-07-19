@@ -13,7 +13,30 @@ As discussed in section \ref{section:IdentifyingResearchGapsandIncludingNovelty}
 
 \section{Derived from Artefact}
 
+\subsection{Traditional Model}
+
 N.Y.C
+
+\subsection{Contemporary Model}
+
+\subsubsection{Phrase Generation}
+
+\begin{equation}
+    \textbf{\textit{score}}(w_{a}, w_{b}) = \frac{\textbf{\textit{count}}(w_{a}w_{b}) - \delta}{\textbf{\textit{count}}(w_{a}) \times \textbf{\textit{count}}(w_{b})}
+\end{equation}
+
+\subsubsection{Subsampling}
+
+\begin{equation}
+    P(w_{i}) = 1 - \sqrt{\frac{t}{f(w_{i})}}
+\end{equation}
+
+\subsubsection{Negative Sampling}
+
+\begin{equation}
+    \log p(w | w_{i}) = \log \sigma ({v'}_{w}^{T} v_{w_{I}}) + \sum_{i=k}^{K} E_{w_{i}P_{n}(w)} \left [ \log \sigma (-{v'}_{w}^{T} v_{w_{I}}) \right ]
+\end{equation}
+
 
 \section{Derived from Observations}
 

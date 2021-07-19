@@ -204,19 +204,6 @@ The weight of the Stochastic Gradient Descent is redefined in terms of the matri
 \end{equation}
 The fundamental functionality has been outlined in theory but in practice will be enough to train the given Skip-Gram Network in \autoref{fig:SkipGramNetwork}.
 
-% TODO rewrite mathematical improvements to include future work.
-% \begin{equation}
-%     \textbf{\textit{score}}(w_{a}, w_{b}) = \frac{\textbf{\textit{count}}(w_{a}w_{b}) - \delta}{\textbf{\textit{count}}(w_{a}) \times \textbf{\textit{count}}(w_{b})}
-% \end{equation}
-
-% \begin{equation}
-%     P(w_{i}) = 1 - \sqrt{\frac{t}{f(w_{i})}}
-% \end{equation}
-
-% \begin{equation}
-%     \log p(w | w_{i}) = \log \sigma ({v'}_{w}^{T} v_{w_{I}}) + \sum_{i=k}^{K} E_{w_{i}P_{n}(w)} \left [ \log \sigma (-{v'}_{w}^{T} v_{w_{I}}) \right ]
-% \end{equation}
-
 \section{Planning the ML Model Design}
 
 Initial prototyping of the machine learning model for a new amalgamation of NLP techniques helped to indicate what the best route of development could be, the planning stage piggybacked off existing work flowchart diagrams in-order to apply the most appropriate method and technique combination. The sequence flowchart is as follows:
@@ -266,7 +253,7 @@ Preparing and pre-processing of the parsed data enables meaning to be allocated 
 
 The initial steps for data organisation will be to tidy the datasets procured from Kaggle as they held a lot of useless information and or columns with little weight. The first organisation step is to merge multiple CSV files and their respected columns into an easily readable format. The removal of unnecessary columns will aid the preprocessing as the dataset will be smaller.
 
-\subsection{Pre-processing}
+\subsection{Pre-processing} \label{sub:C5Preprocessing}
 
 The following methods of preprocessing will be applied to a given dataset:
 
