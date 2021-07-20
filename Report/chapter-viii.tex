@@ -37,11 +37,15 @@ N.Y.C
     \log p(w | w_{i}) = \log \sigma ({v'}_{w}^{T} v_{w_{I}}) + \sum_{i=k}^{K} E_{w_{i}P_{n}(w)} \left [ \log \sigma (-{v'}_{w}^{T} v_{w_{I}}) \right ]
 \end{equation}
 
+\newpage
 
 \section{Derived from Observations}
 
+\subsection{Increasing DataSet Samples}
 When developing and training this project’s artefact, ethics were taken into consideration and it was decided to only make use of open-source (predefined) datasets, this decision limited the search for useable data and as a result, this model made use of two datasets from higher academic institutions. It would be beneficial to have access to more data or datasets for higher accuracy when training.
 
+\subsection{Migrating to an External Host}
 Expanding the model to an outside host, this project was developed within an isolated environment (the developer’s personal environment) as the model was easier to contain and maintain external variables. This resulted in limiting the nature of the model and its potential scope as resources were limited, however, developing in this state did minimise risk and lower the fault tolerance of the text-classification model. It would be beneficial to containerise this model and execute training on a more capable machine such as a higher core server.
 
+\subsection{Implement more Model Approaches}
 The original intention for this project included the planning, design, and development of multiple NLP machine-learning models to put against each other to see how different implementations of theory may affect performance when trained on different datasets and NLP domains, however, due to unforeseen circumstances, this project experienced several difficulties with management and overall development. If this project were to have further development, it would be within reason to explore deeper theoretical combinations as discussed in section 8.1. The project’s scope and limitations would not differ as there is a pretrained and predefined model to use as a reference point.
