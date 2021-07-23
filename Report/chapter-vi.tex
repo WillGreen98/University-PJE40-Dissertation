@@ -28,9 +28,10 @@ As stated above, many a data mining \& analytics and machine learning libraries 
 \subsection{Language libraries and Justification}
 
 \begin{itemize}
+    \item \textbf{\textit{Numpy:}} Data-Science library.
     \item \textbf{\textit{NLTK:}} Natural Language ToolKit for Python
     \item \textbf{\textit{Pandas:}} Popular Python Library for data-science, particularly, data manipulation and formatting.
-    \item \textbf{\textit{Mathlotlib:}} Popular Python library for data visualisation.
+    \item \textbf{\textit{Mathplotlib:}} Popular Python library for data visualization.
 \end{itemize}
 
 
@@ -40,22 +41,6 @@ Firstly, the CSV sample data file needs to be cleaned; as the sample data is rel
 
 \subsection{Data Preprocessing}
 
-Within \autoref{sub:C5Preprocessing}, it states four different data preprocessing methods will be applied, the implementation of those methods are as follows, starting with the removal of punctuation and English stopwords.
+Using Pandas, it is possible to remove colinear values and missing values withing the parsed dataset using the functions delete_duplicate and isnull methods, as such
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{figures/chapter-6/data_preprocess.png}
-    \caption[Code for punctuation and stopword removal on sample data.]{Code for punctuation and stopword removal on sample data.
-    \label{fig:data_pre---processing}}
-\end{figure}
-
-\newpage
-
-Using pandas, we can apply the functions drop_duplications and isnull to handle colinear values and remove missing values at the same time, this is computational cost effective.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{figures/chapter-6/parse_sample.png}
-    \caption[Code for missing and colinear values on sample data.]{Code for missing and colinear values on sample data..
-    \label{fig:parse_sample}}
-\end{figure}
+% Within \autoref{sub:C5Preprocessing}, it states four different data preprocessing methods will be applied, the implementation of those methods are as follows, starting with the removal of punctuation and English stop words.
