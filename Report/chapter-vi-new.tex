@@ -59,6 +59,17 @@ To remove colinear units and missing values, it is possible to use two pandas fu
     \label{fig:parse_sample}}
 \end{figure}
 
+\subsection{Parsing Multiple Student Feedback Datasets}
+
+The network's architecture allows for multiple data samples to be listed as sample input, this is useful as institutions may have multiple sources of training data. At the base level, a simple static file merged into a panda's dataframe will allows for all values across multiple datasets to be read simultaneously and propagated through the hidden layer. As long as the datasets are cleaned beforehand, the model will weigh and evaluative each datum entry.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{figures/chapter-6/parse_multiple_dataframes.png}
+    \caption[Statically parse multiple dataset]{Statically parse multiple dataset.
+    \label{fig:parse_multiple_dataframes}}
+\end{figure}
+
 \section{Network Architecture and Hyper-Parameters}
 
 When designing the model's architecture in \autoref{sub:Word2VecSkipGram}, it was apparent the model could make use of environment variables to classify aspects of the model's training phase; the network uses seven env variables as hyper-parameters, these parameters are:
@@ -69,8 +80,6 @@ When designing the model's architecture in \autoref{sub:Word2VecSkipGram}, it wa
     \caption[Hyper-parameters for network]{Hyper-parameters for network.
     \label{fig:network_Hyper_parameters}}
 \end{figure}
-
-\newpage
 
 Each variable is representative of the work outlined in \autoref{sub:Word2VecSkipGram}, where:
 
@@ -99,6 +108,8 @@ Pre-defining commonly used global variables within the class scope allows for th
 
 \section{One-Hot Encoding}
 
+oene hot \autoref{sub:Word2VecOneHotEncoding}
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{figures/chapter-6/OneHotEncoding.png}
@@ -107,6 +118,8 @@ Pre-defining commonly used global variables within the class scope allows for th
 \end{figure}
 
 \section{Forward Propagation}
+
+f p \autoref{sub:Word2VecForwardPropagation}
 
 \begin{figure}[H]
     \centering
@@ -117,14 +130,18 @@ Pre-defining commonly used global variables within the class scope allows for th
 
 \subsection{Softmax Function}
 
+
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{figures/chapter-6/softmaxfunction.png}
-    \caption[softmaxfunction]{softmaxfunction.
+    \caption[Softmax function for forward error parsing]{Softmax function for forward error parsing.
     \label{fig:softmaxfunction}}
 \end{figure}
 
 \section{Backward Propagation}
+
+b p \autoref{sub:Word2VecBackardPropagation}
 
 \begin{figure}[H]
     \centering
@@ -142,8 +159,28 @@ Pre-defining commonly used global variables within the class scope allows for th
     \label{fig:network_train}}
 \end{figure}
 
-\section{Convert Word to Vector Value}
+The code snippet displayed in \autoref{fig:network_train}, returns the following data; at the lowest level, the fundamental model used epoch values to represent the passing through the hidden layer to which calculate data loss via the loss function specified in \autoref{fig:softmaxfunction} and \autoref{eq:C5ErrorCalc}.
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[]{figures/chapter-6/Training_Multiple_DataSets.png}
+    \caption[Training network on multiple sets of student feedback]{Training network on multiple sets of student feedback.
+    \label{fig:Training_Multiple_DataSets}}
+\end{figure}
+
+\subsection{Graphing with Mathplotlib}
+
+As displayed in \autoref{fig:Training_Multiple_DataSets}, it is clear the model's training is successful as with each passing epoch, the loss value decreases, finding the optimal number of epochs simply entailed increase by a factor of 1 until the loss value did not hold a constant pattren. The figures below show both of the network's matracies $W$ and $W'$ in relation to each passing epoch; with each iteration the word embeddings got higher weighted and lower in regards to word vector, whereas word context was evenly spread at a strong impact value. This shows that the model is a sucess for training student feedback and can be a viable training model for text and text classification methods.
+
+\begin{figure}[H]
+    \includegraphics[width=0.49\columnwidth]{figures/chapter-6/epoch1.png}
+    \includegraphics[width=0.49\columnwidth]{figures/chapter-6/epoch58.png}
+    % For long captions include a short version for the List of Figures/Tables sections in square brackets as below.
+    \caption[Epoch Evolutions for Network]{Epoch Evolutions for Network, displaying the embedding matrix (green) and context matrix (red)
+    \label{fig:EpochEvolutions}}
+\end{figure}
+
+\section{Convert Word to Vector Value}
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{figures/chapter-6/convertwordvector.png}
@@ -168,7 +205,3 @@ Pre-defining commonly used global variables within the class scope allows for th
     \caption[The weighting of all words]{The weighting of all words.
     \label{fig:wordsum}}
 \end{figure}
-
-\section{Graphing with Mathplotlib}
-
-include epoch 1 and epoch 674
