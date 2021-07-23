@@ -30,58 +30,32 @@ As stated above, many a data mining \& analytics and machine learning libraries 
 \begin{itemize}
     \item \textbf{\textit{NLTK:}} Natural Language ToolKit for Python
     \item \textbf{\textit{Pandas:}} Popular Python Library for data-science, particularly, data manipulation and formatting.
-    \item \textbf{\textit{TensorFlow:}}
-    \item \textbf{\textit{PyTorch}}
-    \item \textbf{\textit{SkLearn}}
+    \item \textbf{\textit{Mathlotlib:}} Popular Python library for data visualisation.
 \end{itemize}
 
-\section{Project Structure}
 
 \section{Data Preparation}
 
+Firstly, the CSV sample data file needs to be cleaned; as the sample data is relatively a small dataset, it can be cleaned manually by simply deleting the unnecessary column headers and values. This was completed within Microsoft Excel by the developer.
+
 \subsection{Data Preprocessing}
 
-Withinn \autoref{sub:C5Preprocessing}
+Within \autoref{sub:C5Preprocessing}, it states four different data preprocessing methods will be applied, the implementation of those methods are as follows, starting with the removal of punctuation and English stopwords.
 
-\subsubsection{Punctuation}
-\subsubsection{Missing Values}
-\subsubsection{Collinear Features}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/chapter-6/data_preprocess.png}
+    \caption[Code for punctuation and stopword removal on sample data.]{Code for punctuation and stopword removal on sample data.
+    \label{fig:data_pre---processing}}
+\end{figure}
 
-\subsection{Data Presentation}
+\newpage
 
-\subsection{Data Parsing}
+Using pandas, we can apply the functions drop_duplications and isnull to handle colinear values and remove missing values at the same time, this is computational cost effective.
 
-\section{Implementation --- Traditional}
-
-\begin{python}
-    class POSTagger:
-        def __init__(self, dataset, training_data):
-            self.dataset = []
-            self.training_data = []
-
-        @classmethod
-        def train(dataset)
-            return dataset
-\end{python}
-
-\section{Implementation --- Contemporary}
-
-\begin{python}
-    class Word2Vec_SkipGramModel:
-        def __init__(self, dataset, training_data)
-            self.dataset = []
-            self.training_data = []
-
-        @classmethod
-        def train(dataset)
-            return dataset
-\end{python}
-
-\section{Data Analytics}
-% TODO write about yielded data and link to a section in chap 7 for data evaluation
-
-\section{Issues with Solutions}
-
-\subsection{Issues and Known Bugs}
-
-\section{Project Testing}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/chapter-6/parse_sample.png}
+    \caption[Code for missing and colinear values on sample data.]{Code for missing and colinear values on sample data..
+    \label{fig:parse_sample}}
+\end{figure}

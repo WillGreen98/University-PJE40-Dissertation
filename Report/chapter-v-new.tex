@@ -67,7 +67,7 @@ Modern or "contemporary" methods for corpus classification include: \ldots The m
     \label{fig:Example-Word-Vector}}
 \end{figure}
 
-\subsection{Word2Vec Skip-Gram}
+\subsection{Word2Vec Skip-Gram} \label{sub:Word2VecSkipGram}
 
 Skip-gram rather than Continuous Bag-Of-Words (CBOW [which is the modern implementation of Bag-Of-Words]) as it yields better results with large datasets - such as student feedback - skip gram can also be context aware as it converts neighboring lexemes to vectors.
 
@@ -89,7 +89,7 @@ The Skip-Gram's network architecture is similar to the diagram displayed in \aut
     \label{fig:SkipGramNetwork}}
 \end{figure}
 
-\subsection{One-Hot Encoding}
+\subsection{One-Hot Encoding} \label{sub:Word2VecOneHotEncoding}
 
 Encoding each significant lexeme in a given dataset is helpful for the model to distinguish the level of importance, outlined as context, the diagram shown above in \autoref{fig:SkipGramModel} takes a 1D row vector as the input layer which allows for the model to acceptably one-hot encode each lexeme unit as a numeric value.
 
@@ -111,7 +111,7 @@ Encoding each significant lexeme in a given dataset is helpful for the model to 
 
 This equates to differing versions of the same word (root + free or bound morpheme [affix]) to have the same influence when being parsed forward within the training model.
 
-\subsection{Forward Propagation}
+\subsection{Forward Propagation} \label{sub:Word2VecForwardPropagation}
 
 Once the corpus text is encoded as an acceptable 1D matrix, it can then be parsed to the first hidden layer's node:
 
@@ -151,7 +151,7 @@ For simplicity, $u_{c}$ will transpose each unit through the model in its entire
 \end{multicols}
 ${v'_{w_j}}$ represents the exit vector for the $j^{th}$ lexeme unit in $w_{j}$ (the corpus vocabulary).
 
-\subsection{Backward Propagation}
+\subsection{Backward Propagation} \label{sub:Word2VecBackardPropagation}
 
 As stated above in \autoref{eq:u_cDefinition}, the transposition of each unit $u_{c}$ is simple where node weight is not considered. To account for the weight of the model matrices $W$ and $W'$, the Stochastic Gradient Descent method is applied, which in turn will optimise the backward propagation of node errors; when training the model, errors are bound to occur, to which a loss function is needed to calculate each layers efficiency.
 
@@ -269,4 +269,5 @@ The following methods of preprocessing will be applied to a given dataset:
     \item \textbf{\textit{Punctuation:}} removal of all unnecessary punctuation, where punctuation includes the regular expression: \verb|["[.!?\\-]"]|.
     \item \textbf{\textit{Missing Values:}} word features with a percentage higher than the defined threshold for missing values will be sliced from the dataset as missing features will cause unreliable training data.
     \item \textbf{\textit{Collinear features:}} features in which are highly correlated with another lexical unit will be removed as these features can decrease overall performance on training data, this is due to higher variance of the similar features and lower interpretability of the model.
+    \item \textbf{\textit{Stopwords:}} stopwords found within the given dataset will be removed as they do present meaning for classifcation as they are mostly common words such as "and" or "a", removing stopwords also has a positive affect on performance.
 \end{itemize}
