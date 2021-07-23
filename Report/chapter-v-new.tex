@@ -128,7 +128,7 @@ As each lexeme unit parses through the hidden layer nodes, the exit value needs 
 \begin{equation} \label{eq:u_cDefinition}
     u_{c} = W'^{T}h = W'^{T} W^{T}x
 \end{equation}
-For simplicity, $u_{c}$ will transpose each unit through the model in its entirety, however, the value(s) of $u_{c}$ cause performancy and memory issues in the model. Thus, \textbf{\textit{softmax}} will be used to slice the vector value of $u_{c}$ to [0,1].
+For simplicity, $u_{c}$ will transpose each unit through the model in its entirety, however, the value(s) of $u_{c}$ cause performance and memory issues in the model. Thus, \textbf{\textit{softmax}} will be used to slice the vector value of $u_{c}$ to [0,1].
 
 \begin{equation*}
     y_{c} = Softmax(u)
@@ -155,7 +155,7 @@ ${v'_{w_j}}$ represents the exit vector for the $j^{th}$ lexeme unit in $w_{j}$ 
 
 As stated above in \autoref{eq:u_cDefinition}, the transposition of each unit $u_{c}$ is simple where node weight is not considered. To account for the weight of the model matrices $W$ and $W'$, the Stochastic Gradient Descent method is applied, which in turn will optimise the backward propagation of node errors; when training the model, errors are bound to occur, to which a loss function is needed to calculate each layers efficiency.
 
-\begin{equation}
+\begin{equation} \label{eq:C5ErrorCalc}
     \begin{split}
         Error (E) & = - \log \mathbb{P} (w_{O_,{_1}} , \ldots, w_{O_{,c}} | w_{I}) \\
                   & = - \log \prod_{c=1}^{C} \frac{exp(u_{c,j_{c}^{*}})}{\sum_{j'=1}^{V} exp(u_{j'})}  \\
@@ -269,5 +269,5 @@ The following methods of preprocessing will be applied to a given dataset:
     \item \textbf{\textit{Punctuation:}} removal of all unnecessary punctuation, where punctuation includes the regular expression: \verb|["[.!?\\-]"]|.
     \item \textbf{\textit{Missing Values:}} word features with a percentage higher than the defined threshold for missing values will be sliced from the dataset as missing features will cause unreliable training data.
     \item \textbf{\textit{Collinear features:}} features in which are highly correlated with another lexical unit will be removed as these features can decrease overall performance on training data, this is due to higher variance of the similar features and lower interpretability of the model.
-    \item \textbf{\textit{Stopwords:}} stopwords found within the given dataset will be removed as they do present meaning for classifcation as they are mostly common words such as "and" or "a", removing stopwords also has a positive affect on performance.
+    \item \textbf{\textit{Stopwords:}} stopwords found within the given dataset will be removed as they do present meaning for classification as they are mostly common words such as "and" or "a", removing stopwords also has a positive affect on performance.
 \end{itemize}
