@@ -88,21 +88,20 @@ Defining potential constraints of this project aided identifying its functional 
             \item The model must pre-process the dataset into a given method: tokens/vectors.
             \item The model must pre-process the text within the dataset into specific categories.
             \item The model must clean the text such that cleaning involves the removal of empty fields within a CSV file, any useless or incorrect punctuation, and unnecessary stop words.
-            \item The model must take the clean data and categories stem words.
             \item The model must produce a machine learning implementation that learns and is trained on sample data that is then extrapolated into a useable asset.
             \item The model must classify text.
         \end{itemize}
     \item \textbf{\textit{Should Have}}
         \begin{itemize}\label{FSH}
+            \item The model should predict future student evaluations.
             \item The model solution should be agnostic towards data types, data sensors, vendor (mostly universities or colleges) and data creation date.
             \item The model should report analysis in real-time with graphs or training data within the CLI, this includes any abnormalities which might need deeper analysis to be useful data.
-            \item The model must execute statistical analysis on the yielded information which is generated for future examination.
+            \item The model should execute statistical analysis on the yielded information which is generated for future examination.
         \end{itemize}
     \item \textbf{\textit{Could Have}}
         \begin{itemize}\label{FCH}
             \item The model could provide an analytical solution in which communicates with processing features.
             \item The model could create an interactable alert so the user can decide on how to proceed.
-            \item The model may predict future student evaluations.
             \item The model could save outputted data to a local text file
             \item The model could have param-arguments for it's runtime, most likely in the form of CLI arguments, this allows the model to execute commands in a certain order, i.e \verb-----parse to select the input dataset.
         \end{itemize}
@@ -117,14 +116,13 @@ Defining potential constraints of this project aided identifying its functional 
 \begin{itemize}
     \item \textbf{\textit{Must Have}}
         \begin{itemize}\label{NFMH}
-            \item The model must provide and produce an accurate F-Score.
+            \item The model must yield predictions or results limited to the scope of a set asset.
+            \item The model must yield results across several datasets.
             \item The model must be maintainable within its set scope, overdeveloping or under developing can lead to bugs or broken links such as outdated APIs.
         \end{itemize}
     \item \textbf{\textit{Should Have}}
         \begin{itemize}\label{NFSH}
-            \item The model may yield predictions or results limited to the scope of a set asset.
-            \item The model may yield results across several datasets.
-            \item The model must yield maximum theoretical performance for its implementation, this includes:
+            \item The model should yield maximum theoretical performance for its implementation, this includes:
                 \begin{itemize}
                     \item Correct potential true positives
                     \item Correct potential false positives
@@ -133,15 +131,14 @@ Defining potential constraints of this project aided identifying its functional 
                 \end{itemize}
             \item The model should yield optimal precision of data and classification.
             \item The model should run within an acceptable time-frame for a given machine, e.g., testing must not run over 24hrs for an appropriate dataset.
-            \item The should must be useable for a lay person who wants to classify text (school admin).
         \end{itemize}
     \item \textbf{\textit{Could Have}}
         \begin{itemize}\label{NFCH}
-            \item The model may be scalable for multiple datasets or machines.
+            \item The model could be scalable for multiple datasets or machines.
         \end{itemize}
     \item \textbf{\textit{Won't Have}}
         \begin{itemize}\label{NFWH}
-            \item GUI
+            \item The model won't have ease of useability, such as the functional requirement relating to a GUI.
         \end{itemize}
 \end{itemize}
 

@@ -13,13 +13,9 @@ As discussed in section \ref{section:IdentifyingResearchGapsandIncludingNovelty}
 
 \section{Derived from Artefact}
 
-\subsection{Traditional Model}
-
-N.Y.C
-
-\subsection{Contemporary Model}
-
 \subsubsection{Phrase Generation}
+
+It is often seen within student feedback that co-existing lexemes are interchangeable or are separated from their original co-word, phrase generation can cleanup sample datasets whereby the new dataset is less noisy.
 
 \begin{equation}
     \textbf{\textit{score}}(w_{a}, w_{b}) = \frac{\textbf{\textit{count}}(w_{a}w_{b}) - \delta}{\textbf{\textit{count}}(w_{a}) \times \textbf{\textit{count}}(w_{b})}
@@ -27,11 +23,15 @@ N.Y.C
 
 \subsubsection{Subsampling}
 
+Students may have and use a completely different dialect to one another and can cause conflict within a training model because it cannot differentiate between similar words with different meanings, subsampling introduces a quantitative way to find equilibrium between commonly occurring words and words that are sparse.
+
 \begin{equation}
     P(w_{i}) = 1 - \sqrt{\frac{t}{f(w_{i})}}
 \end{equation}
 
 \subsubsection{Negative Sampling}
+
+This addition to the implemented model accounts for a small percentage of the known errors and will bring them backwards during node propagation, this affects how positively treated words are handled and ensure positive words are the focus whilst maintaining a balanced perspective on both positive and negative sampling of words.
 
 \begin{equation}
     \log p(w | w_{i}) = \log \sigma ({v'}_{w}^{T} v_{w_{I}}) + \sum_{i=k}^{K} E_{w_{i}P_{n}(w)} \left [ \log \sigma (-{v'}_{w}^{T} v_{w_{I}}) \right ]

@@ -1,4 +1,4 @@
-\chapter{Implementation and Testing}
+\chapter{Implementation and Validation}
 
 This chapter focuses on the implementation stage of this project and discusses the development of the artefact's codebase; the development of this project is dissected into its respected categories, such as each significant chunks of code and overall testing. As stated in section 1, the project will form an executable deliverable which is expected to meet the requirements outlined in \autoref{section:FunctionalRequirements} and \autoref{section:NonFunctionalRequirements} which forms the Minimum Viable Product (MVP) until the final production release. The release of the final deliverable will handled in a staged environment to be assessed.
 
@@ -50,7 +50,7 @@ Within \autoref{sub:C5Preprocessing}, it states four different data preprocessin
 
 \newpage
 
-To remove colinear units and missing values, it is possible to use two pandas functions delete duplicate with specified parameters and is null for empty items, these functions can be called when reading an object, in this case read csv. Calling these functions at the same time does not affect computational cost.
+To remove colinear units and missing values, it is possible to use two pandas functions .drop\_duplicate() with specified parameters and .isnull() for empty items, these functions can be called when reading an object, in this case read csv. Calling these functions at the same time does not affect computational cost.
 
 \begin{figure}[H]
     \centering
@@ -108,7 +108,7 @@ Pre-defining commonly used global variables within the class scope allows for th
 
 \section{One-Hot Encoding}
 
-oene hot \autoref{sub:Word2VecOneHotEncoding}
+As defined in \autoref{sub:Word2VecOneHotEncoding}, the One-Hot Encoding function transforms a word uni, in this case a phoneme into a column vector in cardinal space as an ordinal value, it appends the encoded value into a list as a point of reference as the vector index of the word unit itself. The encoded vectors are appended to a list which is used to calculate word unit frequency.
 
 \begin{figure}[H]
     \centering
@@ -119,7 +119,7 @@ oene hot \autoref{sub:Word2VecOneHotEncoding}
 
 \section{Forward Propagation}
 
-f p \autoref{sub:Word2VecForwardPropagation}
+As defined in \autoref{sub:Word2VecForwardPropagation}, the forward propagation of a node inbetween the layers allows for the model to account for each node's current value against the columnn vector, now a row vector because it has been transformed due to dot multiplication between column vectors on a matric being an illegal operation, thus a row vector is required. Tranformation is handled by numpy's matrix functions and is parsed to a propagation matrix to check for current position which returns its exit node, the row vector and to what node it travelled. The exit node of the vector value is parsed via the softmax function for forward passing and to apply the chain rule.
 
 \begin{figure}[H]
     \centering
@@ -130,7 +130,7 @@ f p \autoref{sub:Word2VecForwardPropagation}
 
 \subsection{Softmax Function}
 
-
+The Softmax function is used to aid calculating error values within the current layer node, it is a standard function but is calculated differently for a partial differential as seen in this network model; the value for softmax is calculated by:
 
 \begin{figure}[H]
     \centering
@@ -141,7 +141,7 @@ f p \autoref{sub:Word2VecForwardPropagation}
 
 \section{Backward Propagation}
 
-b p \autoref{sub:Word2VecBackardPropagation}
+As defined in \autoref{sub:Word2VecBackardPropagation}, backward propagation is the result of the partial differential of the outer layer within the model against the row vector and the current layer's error value; the embedding matrix's learning rate is multiplied by the partial differential of layer two and the context matrix is multiplied by the partial differential of layer one. The resulting values are parsed to the layer node which can account for lateral movement between layers.
 
 \begin{figure}[H]
     \centering
@@ -152,6 +152,10 @@ b p \autoref{sub:Word2VecBackardPropagation}
 
 \section{Network Training}
 
+Training the model requires matrix initialisation, the matrix is populated with random values around -0.1 against the vector frequency and word dimensions. The model is fundamentally orientated around an input's center word which helps for neighboring word units for surrounding word context, this is especially for student feedback because students submit entire feedback corpora at once which focuses on the distributed representation for context classification.
+
+As stated above, column vectors are not mathematically suitable as the dot product against a matrix is illegal, another reason for transforming to a row vector is for the use of a function defined as the `row-wise function', this will summate all values in a given row for the purpose of calculating a prediction word unit.
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{figures/chapter-6/network_train.png}
@@ -159,14 +163,78 @@ b p \autoref{sub:Word2VecBackardPropagation}
     \label{fig:network_train}}
 \end{figure}
 
+Training the model on the student feedback shows promising results with high-density matrices with corroborating values, the data shown below is one datum of student feedback per one layer node.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/chapter-6/EmbeddingMatrix.png}
+    \caption[Yielded Embedding Matrix]{Yielded Embedding Matrix from Network Training.
+    \label{fig:sample_emmbedding_matrix}}
+\end{figure}
+
+As with the context matrix data, the data displayed below is one datum of student feedback per one layer node.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/chapter-6/ContextMatrix.png}
+    \caption[Yielded Context Matrix]{Yielded Context Matrix from Network Training.
+    \label{fig:sample_context_matrix}}
+\end{figure}
+
 The code snippet displayed in \autoref{fig:network_train}, returns the following data; at the lowest level, the fundamental model used epoch values to represent the passing through the hidden layer to which calculate data loss via the loss function specified in \autoref{fig:softmaxfunction} and \autoref{eq:C5ErrorCalc}.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[]{figures/chapter-6/Training_Multiple_DataSets.png}
+    \includegraphics[width=\textwidth]{figures/chapter-6/Training_Multiple_DataSets.png}
     \caption[Training network on multiple sets of student feedback]{Training network on multiple sets of student feedback.
     \label{fig:Training_Multiple_DataSets}}
 \end{figure}
+
+The loss value for \autoref{fig:Training_Multiple_DataSets}, reached its lowest at `490.99711604131215` on epoch 138 and then proceeded to increase back to a highest of `505.5393070072687` on epoch 630. Once all epochs are passed, both matrices return their encoded column vectors as lists whereby analysis functions are executed, this allows the word2vec model to predict word units based on the training data provided, the yielded data is the vectorized numeric variation of the word unit, not the word itself.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/chapter-6/prediction_vectors.png}
+    \caption[Network Prediction Vectors]{Network Prediction Vectors.
+    \label{fig:prediction_vectors}}
+\end{figure}
+
+\section{Convert Word to Vector Value}
+
+This function is how a word unit is converted to a row vector (in Python an array) which is added to the embedding matrix as part of its index value of the word value against the word vector value.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/chapter-6/convertwordvector.png}
+    \caption[Conversion of word to vector value]{Conversion of word to vector value.
+    \label{fig:convertwordvector}}
+\end{figure}
+
+\section{Word Weightings and Vector Sum}
+
+\subsection{Word Vector Sum}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/chapter-6/wordvectorsum.png}
+    \caption[The weighting of all word vectors]{The weighting of all word vectors.
+    \label{fig:wordvectorsum}}
+\end{figure}
+
+\subsection{Word Sum}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/chapter-6/wordsum.png}
+    \caption[The weighting of all words]{The weighting of all words.
+    \label{fig:wordsum}}
+\end{figure}
+
+\section{Project Validation}
+
+Any development project will have to go through several stages of testing, this could be for bugs or unexpected behaviors either during or after the design phase; machine learning projects are somewhat harder to validate as you can only validate the returned results against a given correct value that the developer knows, issues arise when trying to validate machine learning projects as requirement can often change or the training sees an unexpected spike in behaviors.
+
+As this project did not make use of formal iterative solutions, whereby each Minimum Viable Product is an update to the previous version, it is hard to specify project validity as there was one care codebase and features were added on when needs be, this is due to not having a client and there only being one developer to organise the intended codebase.
 
 \subsection{Graphing with Mathplotlib}
 
@@ -180,28 +248,4 @@ As displayed in \autoref{fig:Training_Multiple_DataSets}, it is clear the model'
     \label{fig:EpochEvolutions}}
 \end{figure}
 
-\section{Convert Word to Vector Value}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{figures/chapter-6/convertwordvector.png}
-    \caption[Conversion of word to vector value]{Conversion of word to vector value.
-    \label{fig:convertwordvector}}
-\end{figure}
-
-\section{Word Vector Sum}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{figures/chapter-6/wordvectorsum.png}
-    \caption[The weighting of all word vectors]{The weighting of all word vectors.
-    \label{fig:wordvectorsum}}
-\end{figure}
-
-\section{Word Sum}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{figures/chapter-6/wordsum.png}
-    \caption[The weighting of all words]{The weighting of all words.
-    \label{fig:wordsum}}
-\end{figure}
+Unfortunately for this project, given the data construction, there is no easy way to filter in a quantifiable medium and such categorise vector-token quality against the dataset.
